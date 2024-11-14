@@ -47,7 +47,7 @@ class Place(models.Model):
 
 
 class Member(AbstractUser):
-    occupations = models.ManyToManyField(Occupation, related_name="members", default=[Occupation("tanguero"),])
+    occupations = models.ManyToManyField(Occupation, related_name="members")
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
 
     class Meta:
