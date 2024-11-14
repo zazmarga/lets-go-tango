@@ -46,8 +46,9 @@ class Place(models.Model):
         return self.name
 
 
-class User(AbstractUser):
-    occupations = models.ManyToManyField(Occupation)
+class Member(AbstractUser):
+    occupations = models.ManyToManyField(Occupation, related_name="members", default=[Occupation("tanguero"),])
+    phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
 
     class Meta:
         ordering = ("last_name", "first_name")
@@ -74,12 +75,11 @@ class Activity(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    members = models.ManyToManyField(settings.AUTH_USER_MODEL)
-    count_likes = models.PositiveSmallIntegerField(default=0)
+    members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="team_activities")
 
     class Meta:
         verbose_name_plural = "activities"
-        ordering = ["-schedule"]
+        ordering = ["day_of_week", "start_time"]
 
     def __str__(self):
         return f"{self.name} ({self.location.name})"
