@@ -54,7 +54,7 @@ class Member(AbstractUser):
         ordering = ("last_name", "first_name")
 
     def __str__(self):
-        return self.username
+        return f"{self.first_name} {self.last_name}"
 
 
 class Activity(models.Model):
