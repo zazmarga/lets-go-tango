@@ -11,12 +11,12 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage" style="overflow-x: hidden">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ ASSETS_ROOT }}/img/apple-icon.png">
+{#  <link rel="apple-touch-icon" sizes="76x76" href="{{ ASSETS_ROOT }}/img/apple-icon.png">#}
   <link rel="icon" type="image/png" href="{{ ASSETS_ROOT }}/img/favicon.png">
 
   <title>
@@ -41,12 +41,13 @@
 </head>
 
 <body class="{% block body_class %}{% endblock %} bg-gray-200">
-
+  {% include "includes/navigation.html" %}
+  
   {% block content %}{% endblock content %}  
 
-  {% include 'includes/footer.html' %} 
+  {% include "includes/footer.html" %} 
 
-  {% include 'includes/scripts.html' %} 
+  {% include "includes/scripts.html" %} 
 
    <!-- Specific Page JS goes HERE  -->
    {% block javascripts %}{% endblock javascripts %}

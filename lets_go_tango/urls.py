@@ -18,7 +18,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from lets_go_tango import settings
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("tango.urls", namespace="tango")),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]
