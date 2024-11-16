@@ -1,13 +1,16 @@
 from django.contrib.auth import authenticate, login
+from django.db.models import Count
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.decorators import login_required
 from django.template import loader
+from django.views import generic
+
 # from django.template.context_processors import request
 
 from tango.forms import LoginForm, SignUpForm
-from tango.models import Activity, Member, Place, Opinion
+from tango.models import Activity, Member, Place, Opinion, Category
 
 
 @login_required(login_url="/login/")
@@ -73,3 +76,32 @@ def register_user(request):
         form = SignUpForm()
 
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+
+
+class ActivitiesListView(generic.ListView):
+    model = Activity
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = (Activity.objects.order_by("name").select_related("location", "possessor")
+                    .prefetch_related("members"))
+        category_id = self.request.GET.get("id_category")
+        if category_id:
+            queryset = queryset.filter(category_id=category_id)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        return context
+
+
+class ActivityDetailView(generic.DetailView):
+    model = Activity
+    queryset = (Activity.objects.order_by("name").select_related("category", "location", "possessor")
+                    .prefetch_related("members__occupations"))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        return context
