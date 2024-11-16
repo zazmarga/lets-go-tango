@@ -15,18 +15,18 @@
 
 {% extends "layouts/base.html" %}
 
-{% block title %} People {% endblock %}
+{% block title %} Tango People {% endblock %}
 
 <body class="presentation-page bg-gray-200">
 {% block content %}
-  <div class="row"></div>
-  <div class="row page-header min-vh-95 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')">
+  <div class="row">
+    <div class="row page-header min-vh-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')">
     {% include "includes/member_bar.html" %}
   
     <div class="col col-lg-9 col-offset-3" style="padding-top: 120px">  
       <div class="container">
         <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
-{#          <div class="text-primary" style="padding: 10px;">#}
+        
             {% for member in member_list %}
               <a href="{% url 'tango:member-detail' member.id %}">
                 {{ member }}
@@ -39,45 +39,12 @@
               </i>
               <hr>
             {% endfor %}
-{#          </div>#}
+
         </div>
       </div>
     </div>
   </div>
-{#    <section class="pt-3 pb-4" id="count-stats">#}
-{#      <div class="container">#}
-{#        <div class="row">#}
-{#          <div class="col-lg-9 mx-auto py-3">#}
-{#            <div class="row">#}
-{#              <div class="col-md-4 position-relative">#}
-{#                <div class="p-3 text-center">#}
-{#                  <h1 class="text-gradient text-primary"><span id="state1" countTo="{{ num_members }}">0</span>+</h1>#}
-{#                  <h5 class="mt-3">People</h5>#}
-{#                  <p class="text-sm font-weight-normal">We are teachers of Argentine Tango, organizers of milongas, professional tamgo dancers, DJs and others</p>#}
-{#                </div>#}
-{#                <hr class="vertical dark">#}
-{#              </div>#}
-{#              <div class="col-md-4 position-relative">#}
-{#                <div class="p-3 text-center">#}
-{#                  <h1 class="text-gradient text-primary"> <span id="state2" countTo="{{ num_activities }}">0</span>+</h1>#}
-{#                  <h5 class="mt-3">Activities</h5>#}
-{#                  <p class="text-sm font-weight-normal">Lessons, milongas, Tango shows, Tango-parties and more</p>#}
-{#                </div>#}
-{#                <hr class="vertical dark">#}
-{#              </div>#}
-{#              <div class="col-md-4">#}
-{#                <div class="p-3 text-center">#}
-{#                  <h1 class="text-gradient text-primary" id="state3" countTo="{{ num_places }}">0</h1>#}
-{#                  <h5 class="mt-3">Tango places</h5>#}
-{#                  <p class="text-sm font-weight-normal"> Milongas, Tango schools, Tango clubs and others with {{ num_opinions }} reviews</p>#}
-{#                </div>#}
-{#              </div>#}
-{##}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{#    </section>#}
+  </div>
 
 
   
@@ -95,9 +62,7 @@
   <script src="{{ ASSETS_ROOT }}/js/plugins/choices.min.js"></script>
   <!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
   <script src="{{ ASSETS_ROOT }}/js/plugins/parallax.min.js"></script>
-  <!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+
   <script src="{{ ASSETS_ROOT }}/js/material-kit.min.js?v=3.0.0" type="text/javascript"></script>
   <script type="text/javascript">
     if (document.getElementById('state1')) {

@@ -15,56 +15,50 @@
 
 {% extends "layouts/base.html" %}
 
-{% block title %} Personal data {% endblock %}
+{% block title %} Place detail {% endblock %}
 
 <body class="presentation-page bg-gray-200">
 {% block content %}
   <div class="row">
     <div class="row page-header min-vh-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')">
-      {% include "includes/member_bar.html" %}
+      {% include "includes/place_bar.html" %}
       
       <div class="col col-lg-9 col-offset-3" style="padding-top: 120px">  
         <div class="container">
           <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 bg-gradient-faded-light-vertical text-muted">
-            <span class="shadow-blur text-lg-left text-lg text-primary text-bold" style="padding-left: 10px; border: salmon">{{ member }}</span>
-{#            <hr>#}
+            <span class="shadow-blur text-lg-left text-lg text-primary text-bold" style="padding-left: 10px">{{ place.name }}</span>
+
             <p></p>
-            <p class="text-sm">username: <span class="text-primary text-md text-bold"> {{ member.username }}</span></p>
-            <p class="text-sm">email: <span class="text-primary text-md text-bold"> {{ member.email }}</span></p>
-            <p class="text-sm">contact phone number: <span class="text-primary text-md text-bold"> {{ member.phone_number }} </span></p>
-            <p class="text-sm">occupations: 
-              <span class="text-primary text-md text-bold"> 
-                <ul>
-                  {% for occupation in member.occupations.all %}
-                    <li class="text-primary text-sm"> 
-                    {{ occupation }}
-                    </li>
-                  {% endfor %}
-                </ul>
-              </span>
-            </p>
-            <p class="text-sm">own activities -</p>
-              <ul>
-                {% for activity in activities %}
-                  {% if activity.possessor == member %}
-                    <li class="text-primary text-sm"> 
-                      {{ activity }}
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
             
-            <p class="text-sm">participates in activities (as a team member) -</p>
-              <ul>
-                {% for activity in activities %}
-                  {% if member in activity.members.all %}
-                    <li class="text-primary text-sm">
-                      {{ activity }}
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
-          
+            <p class="text-sm">city: <span class="text-primary text-md text-bold"> {{ place.city }}</span></p>
+            <p class="text-sm">direction: <span class="text-primary text-md text-bold"> {{ place.direction }} </span></p>
+
+            <p class="text-sm">Tango activities in this place -</p>
+            {% for activity in activities.all  %}
+              {% if activity.location == place %}
+                <a href="{% url 'tango:activity-detail' activity.id %}">
+                {{ activity }}
+                </a>
+                <p class="text-sm">({{ activity.get_day_of_week_display|upper }}, from {{ activity.start_time|time:"H:i"  }} to {{ activity.end_time|time:"H:i" }})</p>
+              {% endif %}
+            {% endfor %}
+{#              <p class="text-sm">also on the team:#}
+{#                  <ul>#}
+{#                    {% for member in activity.members.all %}#}
+{#                      <li class="text-primary text-sm">{{ member }}#}
+{#                        <span class="text-muted"> - #}
+{#                          {% for occupation in member.occupations.all %}#}
+{#                            {{ occupation }} |#}
+{#                          {% endfor %}#}
+{#                        </span>#}
+{#                      </li>#}
+{#                    {% endfor %}#}
+{#                  </ul>#}
+{#            {% endif %}#}
+{#            <p class="text-sm">price: <span class="text-primary text-md text-bold">$ {{ activity.price }}</span></p>#}
+{#            {% if activity.additional_notes %}#}
+{#              <p class="text-sm">notes: <span class="text-muted"> {{ activity.additional_notes }}</span></p>#}
+{#            {% endif %}#}
           </div>
         </div>
       </div>
@@ -88,7 +82,6 @@
   <script src="{{ ASSETS_ROOT }}/js/plugins/choices.min.js"></script>
   <!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
   <script src="{{ ASSETS_ROOT }}/js/plugins/parallax.min.js"></script>
-
   <script src="{{ ASSETS_ROOT }}/js/material-kit.min.js?v=3.0.0" type="text/javascript"></script>
   <script type="text/javascript">
     if (document.getElementById('state1')) {

@@ -80,7 +80,7 @@ def register_user(request):
 
 class ActivitiesListView(generic.ListView):
     model = Activity
-    paginate_by = 5
+    paginate_by = 4
 
     def get_queryset(self):
         queryset = (Activity.objects.order_by("name").select_related("location", "possessor")
@@ -109,7 +109,7 @@ class ActivityDetailView(generic.DetailView):
 
 class MembersListView(generic.ListView):
     model = Member
-    paginate_by = 5
+    paginate_by = 4
 
     def get_queryset(self):
         queryset = Member.objects.order_by("last_name", "first_name").prefetch_related("occupations")
@@ -138,4 +138,28 @@ class MemberDetailView(generic.DetailView):
 
 class PlacesListView(generic.ListView):
     model = Place
-    paginate_by = 5
+    paginate_by = 4
+
+    def get_queryset(self):
+        queryset = Place.objects.order_by("name")
+        city = self.request.GET.get("city")
+        if city:
+            queryset = queryset.filter(city=city)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cities_count"] = Place.objects.values("city").annotate(place_count=Count("id"))
+        return context
+
+
+class PlaceDetailView(generic.DetailView):
+    model = Place
+    queryset = Place.objects.order_by("name")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cities_count"] = Place.objects.values("city").annotate(place_count=Count("id"))
+        context["activities"] = Activity.objects.order_by("name").select_related("location", "possessor")
+        return context
+
