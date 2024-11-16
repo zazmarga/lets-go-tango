@@ -13,6 +13,7 @@ from tango.forms import LoginForm, SignUpForm
 from tango.models import Activity, Member, Place, Opinion, Category, Occupation
 
 
+
 @login_required(login_url="/login/")
 def index(request):
     num_activities = Activity.objects.count()
@@ -116,6 +117,8 @@ class MembersListView(generic.ListView):
         occupation_id = self.request.GET.get("occupation_id")
         if occupation_id:
             queryset = queryset.filter(occupations__id=occupation_id)
+        # if "list" in self.request.GET.values(urlopen(request(re))):
+        #     self.paginate_by = 4
         return queryset
 
     def get_context_data(self, **kwargs):

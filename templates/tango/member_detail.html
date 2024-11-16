@@ -27,7 +27,7 @@
         <div class="container">
           <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 bg-gradient-faded-light-vertical text-muted">
             <span class="shadow-blur text-lg-left text-lg text-primary text-bold" style="padding-left: 10px; border: salmon">{{ member }}</span>
-{#            <hr>#}
+
             <p></p>
             <p class="text-sm">username: <span class="text-primary text-md text-bold"> {{ member.username }}</span></p>
             <p class="text-sm">email: <span class="text-primary text-md text-bold"> {{ member.email }}</span></p>
@@ -35,7 +35,8 @@
             <p class="text-sm">occupations: 
               <span class="text-primary text-md text-bold"> 
                 <ul>
-                  {% for occupation in member.occupations.all %}
+{#                  {% for occupation in member.occupations.all %}#}
+                  {% for occupation in occupations %}
                     <li class="text-primary text-sm"> 
                     {{ occupation }}
                     </li>
