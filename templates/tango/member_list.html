@@ -15,63 +15,70 @@
 
 {% extends "layouts/base.html" %}
 
-{% block title %} Activity detail {% endblock %}
+{% block title %} People {% endblock %}
 
 <body class="presentation-page bg-gray-200">
 {% block content %}
-  <div class="row">
-    <div class="row page-header min-vh-95 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')">
-      {% include "includes/activity_bar.html" %}
-      
-      <div class="col col-lg-9 col-offset-3" style="padding-top: 120px">  
-        <div class="container">
-          <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 bg-gradient-faded-light-vertical text-muted">
-            <span class="shadow-blur text-lg-left text-lg text-primary text-bold" style="padding-left: 10px">{{ activity.name }}</span>
-{#            <hr>#}
-            <p></p>
-            <p class="text-sm">category: <span class="text-primary text-md text-bold"> {{ activity.category }}</span></p>
-            <p class="text-sm">organizer: <span class="text-primary text-md text-bold"> {{ activity.possessor }}</span></p>
-            <p class="text-sm">location: <span class="text-primary text-md text-bold"> {{ activity.location.name }} </span><span class="text-muted">({{ activity.location.direction }}, {{ activity.location.city }})</span></p>
-            <p class="text-sm">schedule: <span class="text-primary text-md text-bold"> {{ activity.get_day_of_week_display|upper }}, <span class="text-muted">from </span> {{ activity.start_time|time:"H:i"  }} <span class="text-muted">to </span> {{ activity.end_time|time:"H:i" }}</span></p>
-            {% if activity.members.all  %}
-              <p class="text-sm">also on the team:
-                  <ul>
-                    {% for member in activity.members.all %}
-                      <li class="text-primary text-sm">{{ member }}
-                        <span class="text-muted"> - 
-                          {% for occupation in member.occupations.all %}
-                            {{ occupation }} |
-                          {% endfor %}
-                        </span>
-                      </li>
-                    {% endfor %}
-                  </ul>
-            {% endif %}
-            <p class="text-sm">price: <span class="text-primary text-md text-bold">$ {{ activity.price }}</span></p>
-            {% if activity.additional_notes %}
-              <p class="text-sm">notes: <span class="text-muted"> {{ activity.additional_notes }}</span></p>
-            {% endif %}
-          </div>
+  <div class="row"></div>
+  <div class="row page-header min-vh-95 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')">
+    {% include "includes/member_bar.html" %}
+  
+    <div class="col col-lg-9 col-offset-3" style="padding-top: 120px">  
+      <div class="container">
+        <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+{#          <div class="text-primary" style="padding: 10px;">#}
+            {% for member in member_list %}
+              <a href="{% url 'tango:member-detail' member.id %}">
+                {{ member }}
+              </a>
+              <br>
+              <i>
+                username: {{ member.username }}, 
+                {{ member.email }}, 
+                {{ member.phone_number }}
+              </i>
+              <hr>
+            {% endfor %}
+{#          </div>#}
         </div>
       </div>
-    
     </div>
-      
-    
+  </div>
 {#    <section class="pt-3 pb-4" id="count-stats">#}
-{#        <div class="container">#}
-{#          <div class="row">#}
-{#            <div class="col-lg-9 mx-auto py-3">#}
-{#              <div class="row">#}
-{##}
-{#                {{ activity.name }}#}
+{#      <div class="container">#}
+{#        <div class="row">#}
+{#          <div class="col-lg-9 mx-auto py-3">#}
+{#            <div class="row">#}
+{#              <div class="col-md-4 position-relative">#}
+{#                <div class="p-3 text-center">#}
+{#                  <h1 class="text-gradient text-primary"><span id="state1" countTo="{{ num_members }}">0</span>+</h1>#}
+{#                  <h5 class="mt-3">People</h5>#}
+{#                  <p class="text-sm font-weight-normal">We are teachers of Argentine Tango, organizers of milongas, professional tamgo dancers, DJs and others</p>#}
+{#                </div>#}
+{#                <hr class="vertical dark">#}
+{#              </div>#}
+{#              <div class="col-md-4 position-relative">#}
+{#                <div class="p-3 text-center">#}
+{#                  <h1 class="text-gradient text-primary"> <span id="state2" countTo="{{ num_activities }}">0</span>+</h1>#}
+{#                  <h5 class="mt-3">Activities</h5>#}
+{#                  <p class="text-sm font-weight-normal">Lessons, milongas, Tango shows, Tango-parties and more</p>#}
+{#                </div>#}
+{#                <hr class="vertical dark">#}
+{#              </div>#}
+{#              <div class="col-md-4">#}
+{#                <div class="p-3 text-center">#}
+{#                  <h1 class="text-gradient text-primary" id="state3" countTo="{{ num_places }}">0</h1>#}
+{#                  <h5 class="mt-3">Tango places</h5>#}
+{#                  <p class="text-sm font-weight-normal"> Milongas, Tango schools, Tango clubs and others with {{ num_opinions }} reviews</p>#}
+{#                </div>#}
+{#              </div>#}
 {##}
 {#            </div>#}
 {#          </div>#}
 {#        </div>#}
 {#      </div>#}
 {#    </section>#}
-  </div>
+
 
   
   <!--   Core JS Files   -->

@@ -10,7 +10,7 @@ from django.views import generic
 # from django.template.context_processors import request
 
 from tango.forms import LoginForm, SignUpForm
-from tango.models import Activity, Member, Place, Opinion, Category
+from tango.models import Activity, Member, Place, Opinion, Category, Occupation
 
 
 @login_required(login_url="/login/")
@@ -105,3 +105,37 @@ class ActivityDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
         return context
+
+
+class MembersListView(generic.ListView):
+    model = Member
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = Member.objects.order_by("last_name", "first_name").prefetch_related("occupations")
+        occupation_id = self.request.GET.get("occupation_id")
+        if occupation_id:
+            queryset = queryset.filter(occupations__id=occupation_id)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
+        return context
+
+
+class MemberDetailView(generic.DetailView):
+    model = Member
+    queryset = Member.objects.order_by("last_name", "first_name").prefetch_related("occupations")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
+        context["activities"] = (Activity.objects.order_by("name").select_related("possessor")
+                    .prefetch_related("members"))
+        return context
+
+
+class PlacesListView(generic.ListView):
+    model = Place
+    paginate_by = 5
