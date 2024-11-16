@@ -1,5 +1,9 @@
+from importlib.metadata import requires
+from random import choice
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models import constants
 
 from lets_go_tango import settings
 
@@ -74,8 +78,9 @@ class Activity(models.Model):
     day_of_week = models.IntegerField(choices=DAY_CHOICES)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    price = models.DecimalField(max_digits=5, decimal_places=2)
-    members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="team_activities")
+    price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="team_activities", blank=True, null=True)
+    additional_notes = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "activities"
