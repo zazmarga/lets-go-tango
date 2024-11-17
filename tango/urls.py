@@ -1,10 +1,10 @@
-from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 from tango.views import (
     index,
     login_view,
     register_user,
+    LogoutView,
     ActivitiesListView,
     ActivityDetailView,
     MembersListView,

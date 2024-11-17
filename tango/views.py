@@ -1,4 +1,6 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.sessions.models import Session
 from django.db.models import Count
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -7,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.template import loader
 from django.views import generic
 
-# from django.template.context_processors import request
 
 from tango.forms import LoginForm, SignUpForm
 from tango.models import Activity, Member, Place, Opinion, Category, Occupation
@@ -33,6 +34,7 @@ def index(request):
 
     html_template = loader.get_template("tango/index.html")
     return HttpResponse(html_template.render(context, request))
+
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -81,7 +83,21 @@ def register_user(request):
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
 
 
-class ActivitiesListView(generic.ListView):
+class LogoutView(LoginRequiredMixin, generic.TemplateView):
+    template_name = "accounts/logout.html"
+
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        sessions = Session.objects.filter()
+        for session in sessions:
+            data = session.get_decoded()
+            if data.get("_auth_user_id") == str(user.id):
+                session.delete()
+        logout(request)
+        return redirect("/")
+
+
+class ActivitiesListView(LoginRequiredMixin, generic.ListView):
     model = Activity
     paginate_by = 4
 
@@ -99,7 +115,7 @@ class ActivitiesListView(generic.ListView):
         return context
 
 
-class ActivityDetailView(generic.DetailView):
+class ActivityDetailView(LoginRequiredMixin, generic.DetailView):
     model = Activity
     queryset = (Activity.objects.order_by("name").select_related("category", "location", "possessor")
                     .prefetch_related("members__occupations"))
@@ -110,7 +126,7 @@ class ActivityDetailView(generic.DetailView):
         return context
 
 
-class MembersListView(generic.ListView):
+class MembersListView(LoginRequiredMixin, generic.ListView):
     model = Member
     paginate_by = 4
 
@@ -119,8 +135,6 @@ class MembersListView(generic.ListView):
         occupation_id = self.request.GET.get("occupation_id")
         if occupation_id:
             queryset = queryset.filter(occupations__id=occupation_id)
-        # if "list" in self.request.GET.values(urlopen(request(re))):
-        #     self.paginate_by = 4
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -129,7 +143,7 @@ class MembersListView(generic.ListView):
         return context
 
 
-class MemberDetailView(generic.DetailView):
+class MemberDetailView(LoginRequiredMixin, generic.DetailView):
     model = Member
     queryset = Member.objects.order_by("last_name", "first_name").prefetch_related("occupations")
 
@@ -141,7 +155,7 @@ class MemberDetailView(generic.DetailView):
         return context
 
 
-class PlacesListView(generic.ListView):
+class PlacesListView(LoginRequiredMixin, generic.ListView):
     model = Place
     paginate_by = 4
 
@@ -158,7 +172,7 @@ class PlacesListView(generic.ListView):
         return context
 
 
-class PlaceDetailView(generic.DetailView):
+class PlaceDetailView(LoginRequiredMixin, generic.DetailView):
     model = Place
     queryset = Place.objects.order_by("name")
 
@@ -167,4 +181,3 @@ class PlaceDetailView(generic.DetailView):
         context["cities_count"] = Place.objects.values("city").annotate(place_count=Count("id"))
         context["activities"] = Activity.objects.order_by("name").select_related("location", "possessor")
         return context
-
