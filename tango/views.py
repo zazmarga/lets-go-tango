@@ -19,14 +19,16 @@ def index(request):
     num_activities = Activity.objects.count()
     num_members = Member.objects.count()
     num_places = Place.objects.count()
-    num_opinions = Opinion.objects.count()
+
+    num_visits = request.session.get("num_visits", 0)
+    request.session["num_visits"] = num_visits + 1
 
     context = {
         "segment": "index",
         "num_activities": num_activities,
         "num_members": num_members,
         "num_places": num_places,
-        "num_opinions": num_opinions,
+        "num_visits": num_visits + 1,
     }
 
     html_template = loader.get_template("tango/index.html")
