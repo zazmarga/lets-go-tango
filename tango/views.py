@@ -7,11 +7,13 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth.decorators import login_required
 from django.template import loader
+from django.template.context_processors import request
+from django.urls import reverse_lazy
 from django.views import generic
 
 
 from tango.forms import LoginForm, SignUpForm
-from tango.models import Activity, Member, Place, Opinion, Category, Occupation
+from tango.models import Activity, Member, Place, Category, Occupation
 
 
 
@@ -73,7 +75,7 @@ def register_user(request):
             msg = "Account created successfully."
             success = True
 
-            return redirect("/login/")
+            # return redirect("/")
 
         else:
             msg = "Form is not valid"
@@ -180,4 +182,15 @@ class PlaceDetailView(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         context["cities_count"] = Place.objects.values("city").annotate(place_count=Count("id"))
         context["activities"] = Activity.objects.order_by("name").select_related("location", "possessor")
+        return context
+
+
+class MemberCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Member
+    form_class = SignUpForm
+    success_url = reverse_lazy("tango:member-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
         return context

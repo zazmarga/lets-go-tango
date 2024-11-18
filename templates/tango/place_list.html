@@ -23,10 +23,11 @@
     <div class="row page-header min-vh-75 relative" style="background-image: url('{{ ASSETS_ROOT }}/img/bg2.jpg')">
     {% include "includes/place_bar.html" %}
   
-    <div class="col col-lg-9 col-offset-3" style="padding-top: 120px">  
-      <div class="container">
+    <div class="col col-lg-9 col-offset-3">  
+      <div class="container align-top">
         <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
           {% for place in place_list %}
+            <hr>
             <a href="{% url 'tango:place-detail' place.id %}">
               {{ place.name }}
             </a>
@@ -34,7 +35,7 @@
             <i>
               direction: {{ place.direction }},  
               city: {{ place.city }}
-            </i><hr>
+            </i>
           {% endfor %}
         </div>
       </div>

@@ -5,7 +5,13 @@
 {% block body_class %} sign-in-basic {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+  <style>
+    .bg-gradient-primary {
+    background-image: linear-gradient(195deg, #EC407A 0%, #250415 100%);
+}
+  </style>
+{% endblock stylesheets %}
 
 {% block content %}
 
@@ -63,7 +69,7 @@
       </div>
     </div>
 
-    {% include 'includes/footer-auth.html' %} 
+    {% include "includes/footer-auth.html" %} 
 
   </div>
 

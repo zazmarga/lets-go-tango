@@ -11,6 +11,7 @@ from tango.views import (
     MemberDetailView,
     PlacesListView,
     PlaceDetailView,
+    MemberCreateView,
 )
 
 
@@ -26,6 +27,7 @@ urlpatterns = [
     path("members/<int:pk>/", MemberDetailView.as_view(), name="member-detail"),
     path("places/", PlacesListView.as_view(), name="place-list"),
     path("places/<int:pk>/", PlaceDetailView.as_view(), name="place-detail"),
+    path("members/create/", MemberCreateView.as_view(), name="member-create"),
 ]
 
 app_name = "tango"
