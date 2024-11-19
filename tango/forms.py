@@ -112,6 +112,7 @@ class ActivityCreationForm(forms.ModelForm):
         required=True,
     )
     location = forms.ModelChoiceField(
+        required=False,
         queryset=Place.objects.all(),
         empty_label="--no location selected--",
         widget=forms.Select(
@@ -171,45 +172,83 @@ class ActivityCreationForm(forms.ModelForm):
                   "additional_notes")
 
 
+class OccupationCreationForm(forms.ModelForm):
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Occupation's name in one word with a capital letter",
+                "class": "form-control"
+            }
+        ))
+    description = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Brief description of this role in the Tango community",
+                "class": "form-control"
+            }
+        ))
+    class Meta:
+        model = Occupation
+        fields = ("name", "description")
+
+
+class CategoryCreationForm(forms.ModelForm):
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Tango activity category's name",
+                "class": "form-control"
+            }
+        ))
+    description = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Brief description of this category in Tango",
+                "class": "form-control"
+            }
+        ))
+    class Meta:
+        model = Category
+        fields = ("name", "description")
+
 
 class PlaceCreationForm(forms.ModelForm):
-    pass
-    # name = forms.CharField(
-    #     widget=forms.TextInput(
-    #         attrs={
-    #             "placeholder": "Place name",
-    #             "class": "form-control"
-    #         }
-    #     )
-    # )
-    # city = forms.CharField(
-    #     widget=forms.Select(
-    #         choices=[(city["city"], city["city"]) for city in Place.objects.values("city").distinct()],
-    #         attrs={
-    #             "placeholder": "Select city",
-    #             "class": "form-control",
-    #         }
-    #     )
-    # )
-    # new_city = forms.CharField(
-    #     required=False,
-    #     widget=forms.TextInput(
-    #         attrs={
-    #             "placeholder": "Enter new city if not listed",
-    #             "class": "form-control",
-    #         }
-    #     )
-    # )
-    # direction = forms.CharField(
-    #     widget=forms.TextInput(
-    #         attrs={
-    #             "placeholder": "Direction: street, number...",
-    #             "class": "form-control"
-    #         }
-    #     )
-    # )
-    #
-    # class Meta:
-    #     model = Place
-    #     fields = ("name", "city", "new_city", )
-    #
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Place name",
+                "class": "form-control"
+            }
+        )
+    )
+    city = forms.CharField(
+        required=False,
+        widget=forms.Select(
+            choices=set((city["city"], city["city"]) for city in Place.objects.values("city").distinct()),
+            attrs={
+                "placeholder": "Select city",
+                "class": "form-control",
+            }
+        )
+    )
+    new_city = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter new city if not listed",
+                "class": "form-control",
+            }
+        )
+    )
+    direction = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Direction: street, number...",
+                "class": "form-control"
+            }
+        )
+    )
+
+    class Meta:
+        model = Place
+        fields = ("name", "city", "new_city", "direction")

@@ -15,6 +15,8 @@ from tango.views import (
     ActivityCreateView,
     PlaceCreateView,
     ActivityUpdateView,
+    OccupationCreateView,
+    CategoryCreateView,
 )
 
 
@@ -34,7 +36,8 @@ urlpatterns = [
     path("activities/create/", ActivityCreateView.as_view(), name="activity-create"),
     path("activities/<int:pk>/update/", ActivityUpdateView.as_view(), name="activity-update"),
     path("places/create/", PlaceCreateView.as_view(), name="place-create"),
-
+    path("occupations/create/", OccupationCreateView.as_view(), name="occupation-create"),
+    path("category/create/", CategoryCreateView.as_view(), name="category-create"),
 ]
 
 app_name = "tango"

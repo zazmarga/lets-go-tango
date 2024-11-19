@@ -77,7 +77,7 @@ class Activity(models.Model):
     name = models.CharField(max_length=155)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     possessor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    location = models.ForeignKey(Place, on_delete=models.CASCADE)
+    location = models.ForeignKey(Place, on_delete=models.CASCADE, blank=True, null=True)
     day_of_week = models.IntegerField(choices=DAY_CHOICES)
     start_time = models.TimeField()
     end_time = models.TimeField()
