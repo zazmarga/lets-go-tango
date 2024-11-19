@@ -14,7 +14,8 @@ from django.views import generic
 
 from tango.forms import (LoginForm, SignUpForm, ActivityCreationForm,
                          PlaceCreationForm, OccupationCreationForm,
-                         CategoryCreationForm, MemberSearchForm, )
+                         CategoryCreationForm, MemberSearchForm,
+                         ActivitySearchForm, )
 from tango.models import Activity, Member, Place, Category, Occupation
 
 
@@ -107,6 +108,15 @@ class ActivitiesListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         queryset = (Activity.objects.order_by("name").select_related("location", "possessor"))
+        form = ActivitySearchForm(self.request.GET)
+        if form.is_valid():
+            day_of_week = form.cleaned_data.get("day_of_week")
+
+            if form.cleaned_data.get("is_mine"):
+                queryset = queryset.filter(possessor=form.cleaned_data.get("user_id"))
+            if day_of_week != "":
+                queryset = queryset.filter(day_of_week=day_of_week)
+
         category_id = self.request.GET.get("id_category")
         if category_id:
             queryset = queryset.filter(category_id=category_id)
@@ -115,6 +125,7 @@ class ActivitiesListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        context["activity_search_form"] = ActivitySearchForm(self.request.GET)
         return context
 
 

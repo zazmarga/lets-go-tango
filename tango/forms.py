@@ -3,7 +3,7 @@ from contextlib import nullcontext
 from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
-
+from django.utils.functional import empty
 
 from tango.models import Member, Occupation, Activity, Category, Place
 
@@ -267,3 +267,28 @@ class MemberSearchForm(forms.Form):
             },
         ),
     )
+
+
+class ActivitySearchForm(forms.Form):
+    # is_mine = forms.BooleanField(
+    #     required=False,
+    #     label="MINE ",
+    #     widget=forms.CheckboxInput(
+    #         attrs={
+    #             "class": "form-control-check",
+    #
+    #         }
+    #     )
+    # )
+    day_of_week = forms.ChoiceField(
+        required=False,
+        label="",
+        choices=[("", "--no selected day--"), (0, "MONDAY"), (1, "TUESDAY"), (2, "WEDNESDAY"), (3, "THURSDAY"), (4, "FRIDAY"), (5, "SATURDAY"),
+                 (6, "SUNDAY"), ],
+        widget=forms.Select(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )
+
