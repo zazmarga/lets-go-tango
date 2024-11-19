@@ -26,26 +26,29 @@
       <div class="col col-lg-9 col-offset-3">  
         <div class="container align-top">
           <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
-            {% if user.is_staff or user.is_superuser %}
-              <div style="display: inline">
-                <a style="float: left" href="{% url 'tango:member-create' %}">
-                  <button class="btn-primary count_item_bar" type="submit" style="width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);"> +add </button>
+            <div class="inline">
+              {% if user.is_staff or user.is_superuser %}
+                <a style="float: right" href="{% url 'tango:member-create' %}">
+                  <button class="btn-primary count_item_bar" type="submit" style="width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);"> + add </button>
                 </a>
-              </div>
-            {% endif %}
-          
-            {% for member in member_list %}
+              {% endif %}
+              <form action="" method="get" class="inline bg-gradient" style="width: 30%; height: 40px; border-radius: 5px; background-color: whitesmoke;">
+                {{ member_search_form }}
+                <input type="submit" value="&#8981; search" class="inline btn-primary count_item_bar position-relative" style="left: 80%; top: -90%; width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">
+              </form>
               <hr>
+            </div>
+            {% for member in member_list %}
+              
               <a href="{% url 'tango:member-detail' member.id %}">
                 {{ member }} {% if member == user %} (Me) {% endif %}
-              </a> 
-              
-              <br>
+              </a>
               <i>
                 username: {{ member.username }}, 
                 {{ member.email }}, 
                 {{ member.phone_number }}
               </i>
+              <hr>
             {% endfor %}
   
           </div>

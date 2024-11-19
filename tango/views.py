@@ -14,7 +14,7 @@ from django.views import generic
 
 from tango.forms import (LoginForm, SignUpForm, ActivityCreationForm,
                          PlaceCreationForm, OccupationCreationForm,
-                         CategoryCreationForm, )
+                         CategoryCreationForm, MemberSearchForm, )
 from tango.models import Activity, Member, Place, Category, Occupation
 
 
@@ -134,6 +134,11 @@ class MembersListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         queryset = Member.objects.order_by("last_name", "first_name").prefetch_related("occupations")
+        form = MemberSearchForm(self.request.GET)
+        if form.is_valid():
+            queryset = queryset.filter(
+                last_name__icontains=form.cleaned_data["last_name"]
+            )
         occupation_id = self.request.GET.get("occupation_id")
         if occupation_id:
             queryset = queryset.filter(occupations__id=occupation_id)
@@ -142,6 +147,10 @@ class MembersListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
+        last_name = self.request.GET.get("last_name", "")
+        context["member_search_form"] = MemberSearchForm(
+                initial={"last_name": last_name}
+        )
         return context
 
 

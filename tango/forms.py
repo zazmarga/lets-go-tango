@@ -253,3 +253,17 @@ class PlaceCreationForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = ("name", "city", "new_city", "direction")
+
+
+class MemberSearchForm(forms.Form):
+    last_name = forms.CharField(
+        max_length=180,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by member's Last Name...",
+                "class": "form-control",
+            },
+        ),
+    )
