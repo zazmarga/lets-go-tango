@@ -15,7 +15,7 @@
 
 {% extends "layouts/base.html" %}
 
-{% block title %} Activity detail {% endblock %}
+{% block title %} Delete confirm activity {% endblock %}
 
 <body class="presentation-page bg-gray-200">
 {% block content %}
@@ -26,33 +26,33 @@
       <div class="col col-lg-9 col-offset-3" style="padding-top: 120px">
         <div class="container">
           <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 bg-gradient-faded-light-vertical text-muted">
-            {% if user == activity.possessor %}
+            {% if user == activity.possessor or user.is_superuser %}
               <div style="display: inline">
-                <p class="inline">
-                  <a style="float: right" href="{% url 'tango:activity-update' pk=activity.id %}">
-                    <button class="btn-primary count_item_bar" type="submit" style="width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">update</button>
-                  </a>
-                  <a style="float: right" href="{% url 'tango:activity-delete' pk=activity.id %}">
-                    <button class="btn-primary count_item_bar" type="submit" style="width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">
-                      <span class="text-danger">delete</span>
-                    </button>
-                  </a>
-                </p>
+
                 <br>
               </div>
             {% endif %}
-            <span class="shadow-blur text-lg-left text-lg text-primary text-bold" style="padding-left: 10px">{{ activity.name }}</span>
-{#            <hr>#}
-            <p></p>
-            <p class="text-sm">category: <span class="text-primary text-md text-bold"> {{ activity.category }}</span></p>
-            <p class="text-sm">organizer: <span class="text-primary text-md text-bold"> {{ activity.possessor }}</span></p>
-            <p class="text-sm">location: <span class="text-primary text-md text-bold"> {{ activity.location.name }} </span><span class="text-muted">({{ activity.location.direction }}, {{ activity.location.city }})</span></p>
-            <p class="text-sm">schedule: <span class="text-primary text-md text-bold"> {{ activity.get_day_of_week_display|upper }}, <span class="text-muted">from </span> {{ activity.start_time|time:"H:i"  }} <span class="text-muted">to </span> {{ activity.end_time|time:"H:i" }}</span></p>
-            
-            <p class="text-sm">price: <span class="text-primary text-md text-bold">$ {{ activity.price }}</span></p>
-            {% if activity.additional_notes %}
-              <p class="text-sm">notes: <span class="text-muted"> {{ activity.additional_notes }}</span></p>
-            {% endif %}
+            <p>Are you sure you want to delete this activity?
+              <hr> 
+              <span class="shadow-blur text-lg-left text-lg text-primary text-bold" style="padding-left: 10px"> {{ activity.name }}</span>
+              <hr>
+            </p>
+          
+            <div class="inline">
+              <a style="float: left" href="{% url 'tango:activity-detail' pk=activity.id %}">
+                <button class="btn-primary count_item_bar" type="submit" style="width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">cancel</button>
+              </a>         
+          
+              <form action="" method="post" class="inline">
+                {% csrf_token %}
+                  <a style="float: left" href="{% url 'tango:activity-delete' pk=activity.id %}">
+                    <button class="btn-primary count_item_bar" type="submit" style="width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">
+                      <span class="text-danger text-bold">yes -> X</span>
+                    </button>
+                  </a>
+              </form>
+            </div>
+
           </div>
         </div>
       </div>

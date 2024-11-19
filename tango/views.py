@@ -261,3 +261,13 @@ class CategoryCreateView(LoginRequiredMixin, generic.CreateView):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
         return context
+
+
+class ActivityDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Activity
+    success_url = reverse_lazy("tango:activity-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        return context

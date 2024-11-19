@@ -157,6 +157,7 @@ class ActivityCreationForm(forms.ModelForm):
         )
     )
     additional_notes = forms.CharField(
+        required=False,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Additional information here...",
