@@ -43,22 +43,11 @@
                 </ul>
               </span>
             </p>
-            <p class="text-sm">own activities -</p>
+            <p class="text-sm">Activities -</p>
               <ul>
                 {% for activity in activities %}
                   {% if activity.possessor == member %}
                     <li class="text-primary text-sm"> 
-                      {{ activity }}
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            
-            <p class="text-sm">participates in activities (as a team member) -</p>
-              <ul>
-                {% for activity in activities %}
-                  {% if member in activity.members.all %}
-                    <li class="text-primary text-sm">
                       {{ activity }}
                     </li>
                   {% endif %}

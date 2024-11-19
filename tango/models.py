@@ -3,7 +3,6 @@ from random import choice
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models import constants
 
 from lets_go_tango import settings
 
@@ -46,8 +45,12 @@ class Place(models.Model):
     city = models.CharField(max_length=63)
     direction = models.CharField(max_length=155)
 
+    class Meta:
+        ordering = ("name", )
+
     def __str__(self):
         return self.name
+
 
 
 class Member(AbstractUser):
@@ -58,7 +61,7 @@ class Member(AbstractUser):
         ordering = ("last_name", "first_name")
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.last_name} {self.first_name}"
 
 
 class Activity(models.Model):
@@ -79,7 +82,6 @@ class Activity(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="team_activities", blank=True, null=True)
     additional_notes = models.TextField(blank=True, null=True)
 
     class Meta:

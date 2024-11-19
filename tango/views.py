@@ -3,16 +3,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sessions.models import Session
 from django.db.models import Count
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 from django.template import loader
-from django.template.context_processors import request
-from django.urls import reverse_lazy
+
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 
-from tango.forms import LoginForm, SignUpForm
+from tango.forms import (LoginForm, SignUpForm, ActivityCreationForm,
+                         PlaceCreationForm,)
 from tango.models import Activity, Member, Place, Category, Occupation
 
 
@@ -104,8 +105,7 @@ class ActivitiesListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        queryset = (Activity.objects.order_by("name").select_related("location", "possessor")
-                    .prefetch_related("members"))
+        queryset = (Activity.objects.order_by("name").select_related("location", "possessor"))
         category_id = self.request.GET.get("id_category")
         if category_id:
             queryset = queryset.filter(category_id=category_id)
@@ -120,7 +120,7 @@ class ActivitiesListView(LoginRequiredMixin, generic.ListView):
 class ActivityDetailView(LoginRequiredMixin, generic.DetailView):
     model = Activity
     queryset = (Activity.objects.order_by("name").select_related("category", "location", "possessor")
-                    .prefetch_related("members__occupations"))
+                    .prefetch_related("member__occupations"))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -152,8 +152,7 @@ class MemberDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
-        context["activities"] = (Activity.objects.order_by("name").select_related("possessor")
-                    .prefetch_related("members"))
+        context["activities"] = (Activity.objects.order_by("name").select_related("possessor"))
         return context
 
 
@@ -194,3 +193,66 @@ class MemberCreateView(LoginRequiredMixin, generic.CreateView):
         context = super().get_context_data(**kwargs)
         context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
         return context
+
+
+class ActivityCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Activity
+    form_class = ActivityCreationForm
+    success_url = reverse_lazy("tango:activity-detail")
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        return context
+
+    def get_success_url(self):
+        return reverse("tango:activity-detail", kwargs={"pk": self.object.pk})
+
+
+# def team_create(request, pk):
+#     categories = Category.objects.annotate(activity_count=Count("activity"))
+#     activity = get_object_or_404(Activity, pk=pk)
+#     if request.method == "POST":
+#         form = ActivityTeamCreationForm(request.POST)
+#         if form.is_valid():
+#             members = form.cleaned_data.get("members")
+#             for member in members:
+#                 activity.members.add(member)
+#             activity.save()
+#         return redirect("tango:activity-detail", pk=activity.id)
+#     else:
+#         form = ActivityTeamCreationForm()
+#
+#         return render(request, "tango/team_form.html", {"form": form, "activity": activity, "categories": categories})
+#
+
+class ActivityUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Activity
+    form_class = ActivityCreationForm
+    success_url = reverse_lazy("tango:activity-detail")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        return context
+
+    def get_success_url(self):
+        return reverse("tango:activity-detail", kwargs={"pk": self.object.pk})
+
+
+class PlaceCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Place
+    form_class = PlaceCreationForm
+    success_url = reverse_lazy("tango:place-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cities_count"] = Place.objects.values("city").annotate(place_count=Count("id"))
+        return context
+
+    def form_valid(self, form):
+        new_city = form.cleaned_data.get("new_city")
+        if new_city:
+            form.instance.city = new_city
+        return super().form_valid(form).save()
