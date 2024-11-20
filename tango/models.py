@@ -89,8 +89,8 @@ class Activity(models.Model):
         ordering = ["day_of_week", "start_time"]
 
     def __str__(self):
-        return f"{self.name} ({self.location.name})"
-
+        location_name = self.location.name if self.location else "No location"
+        return f"{self.name} ({location_name})"
 
 class Opinion(models.Model):
     user = models.ForeignKey(

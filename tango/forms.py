@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.functional import empty
 
-from tango.models import Member, Occupation, Activity, Category, Place
+from tango.models import Member, Occupation, Activity, Category, Place, Opinion
 
 """
 Copyright (c) 2019 - present AppSeed.us
@@ -270,16 +270,6 @@ class MemberSearchForm(forms.Form):
 
 
 class ActivitySearchForm(forms.Form):
-    # is_mine = forms.BooleanField(
-    #     required=False,
-    #     label="MINE ",
-    #     widget=forms.CheckboxInput(
-    #         attrs={
-    #             "class": "form-control-check",
-    #
-    #         }
-    #     )
-    # )
     day_of_week = forms.ChoiceField(
         required=False,
         label="",
@@ -291,4 +281,22 @@ class ActivitySearchForm(forms.Form):
             }
         )
     )
+
+
+class OpinionForm(forms.ModelForm):
+    content = forms.CharField(
+        required=False,
+        label="",
+        widget=forms.Textarea(
+            attrs={
+                "cols": "80",
+                "rows": "2",
+                "placeholder": "Add your opinion here...",
+                "class": "form-control",
+            }
+        )
+    )
+    class Meta:
+        model = Opinion
+        fields = ("content", )
 

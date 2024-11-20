@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 from django.template import loader
+from django.template.context_processors import request
 
 from django.urls import reverse_lazy, reverse
 from django.views import generic
@@ -15,9 +16,8 @@ from django.views import generic
 from tango.forms import (LoginForm, SignUpForm, ActivityCreationForm,
                          PlaceCreationForm, OccupationCreationForm,
                          CategoryCreationForm, MemberSearchForm,
-                         ActivitySearchForm, )
-from tango.models import Activity, Member, Place, Category, Occupation
-
+                         ActivitySearchForm, OpinionForm, )
+from tango.models import Activity, Member, Place, Category, Occupation, Opinion
 
 
 @login_required(login_url="/login/")
@@ -129,14 +129,56 @@ class ActivitiesListView(LoginRequiredMixin, generic.ListView):
         return context
 
 
+# class ActivityDetailView(LoginRequiredMixin, generic.DetailView):
+#     model = Activity
+#     queryset = (Activity.objects.order_by("name").select_related("category", "location", "possessor", ))
+#
+#     def get_request(self):
+#         activity = get_object_or_404(Activity, pk=self.object.pk)
+#
+#         opinions = Opinion.objects.filter(activity=activity)
+#         form = OpinionForm(self.request.GET)
+#
+#         if self.request.method == "POST":
+#             opinion_form = OpinionForm(self.request.POST)
+#             if opinion_form.is_valid():
+#                 new_opinion = opinion_form.save(commit=False)
+#                 new_opinion.user = self.request.user
+#                 new_opinion.activity = self.object
+#                 new_opinion.save()
+#         return render(request, "tango/activity_detail.html", {"activity": activity, "opinions": opinions, "form": form})
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+#         context["opinions"] = Opinion.objects.select_related("activity")
+#         context["opinion_form"] = OpinionForm(self.request.GET)
+#         return context
+#
+#
+
 class ActivityDetailView(LoginRequiredMixin, generic.DetailView):
     model = Activity
-    queryset = (Activity.objects.order_by("name").select_related("category", "location", "possessor"))
+    queryset = Activity.objects.order_by("name").select_related("category", "location", "possessor")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        context["opinions"] = Opinion.objects.filter(activity=self.object)
+        context["opinion_form"] = OpinionForm()
         return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = OpinionForm(request.POST)
+        if form.is_valid():
+            new_opinion = form.save(commit=False)
+            new_opinion.user = self.request.user
+            new_opinion.activity = self.object
+            new_opinion.save()
+            return redirect("tango:activity-detail", pk=self.object.pk)
+        return self.render_to_response(self.get_context_data(opinion_form=form))
+
 
 
 class MembersListView(LoginRequiredMixin, generic.ListView):
