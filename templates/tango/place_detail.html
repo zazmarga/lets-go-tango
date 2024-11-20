@@ -36,29 +36,14 @@
             <p class="text-sm">Tango activities in this place -</p>
             {% for activity in activities.all  %}
               {% if activity.location == place %}
-                <a href="{% url 'tango:activity-detail' activity.id %}">
-                {{ activity }}
-                </a>
-                <p class="text-sm">({{ activity.get_day_of_week_display|upper }}, from {{ activity.start_time|time:"H:i"  }} to {{ activity.end_time|time:"H:i" }})</p>
+                <p class="text-md text-primary">({{ activity.get_day_of_week_display|upper }}, from {{ activity.start_time|time:"H:i"  }} to {{ activity.end_time|time:"H:i" }})
+                  <b><a href="{% url 'tango:activity-detail' activity.id %}">
+                  {{ activity }}
+                  </a></b>
+                </p>
               {% endif %}
             {% endfor %}
-{#              <p class="text-sm">also on the team:#}
-{#                  <ul>#}
-{#                    {% for member in activity.members.all %}#}
-{#                      <li class="text-primary text-sm">{{ member }}#}
-{#                        <span class="text-muted"> - #}
-{#                          {% for occupation in member.occupations.all %}#}
-{#                            {{ occupation }} |#}
-{#                          {% endfor %}#}
-{#                        </span>#}
-{#                      </li>#}
-{#                    {% endfor %}#}
-{#                  </ul>#}
-{#            {% endif %}#}
-{#            <p class="text-sm">price: <span class="text-primary text-md text-bold">$ {{ activity.price }}</span></p>#}
-{#            {% if activity.additional_notes %}#}
-{#              <p class="text-sm">notes: <span class="text-muted"> {{ activity.additional_notes }}</span></p>#}
-{#            {% endif %}#}
+
           </div>
         </div>
       </div>

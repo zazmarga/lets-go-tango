@@ -3,13 +3,13 @@
 <div class="container justify-content-center" style="padding-top: 3px">
   <ul class="pagination pagination-primary justify-content-center">
     {% if page_obj.has_previous %}
-{#      <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link text-primary">prev</a></li>#}
+
       <li class="page-item"><a href="?{% query_transform request page=page_obj.previous_page_number %}" class="page-link text-primary">prev</a></li>
     {% else %}
       <li class="page-item disabled"><a href="" class="page-link">prev</a></li>
     {% endif %}
     <li class="page-item"><span class="page-link text-white text-md bg-primary">{{ page_obj.number }}
-{#      of {{ paginator.num_pages }}#}
+
     </span></li>
     {% if page_obj.has_next %}
       <li class="page-item"><a href="?{% query_transform request page=page_obj.next_page_number %}" class="page-link text-primary">next</a></li>
@@ -19,4 +19,3 @@
   </ul>
 </div>
 {% endif %}
-

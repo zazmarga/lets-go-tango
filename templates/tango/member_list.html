@@ -42,6 +42,11 @@
 
               <a href="{% url 'tango:member-detail' member.id %}">
                 {{ member }} {% if member == user %} (Me) {% endif %}
+               
+              {%  if member.activity_count > 0 %}
+                  <text class="text-xs">({{ member.activity_count }} activit{% if member.activity_count == 1 %}y{% else %}ies{% endif %})
+                  </text>
+                {% endif %}
               </a>
               <i>
                 username: {{ member.username }},

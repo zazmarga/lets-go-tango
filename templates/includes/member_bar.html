@@ -8,7 +8,7 @@
               <hr>
               {% for occupation in occupations %}
                 <br>
-                <a href="{% url 'tango:member-list' %}?occupation_id={{ occupation.id }}" class="nav-item nav-fill lead text-white mt-3">
+                <a href="{% url 'tango:member-list' %}?occupation_id={{ occupation.id }}" title="{{ occupation.description }}" class="nav-item nav-fill lead text-white mt-3">
                   <button class="count_item_bar text-sm text-primary" style="background:#e4472b;"> {{ occupation.member_count }} </button>
                   {{ occupation.name }}{{ occupation.member_count|pluralize }}
                 </a>

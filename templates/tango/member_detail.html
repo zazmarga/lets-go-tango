@@ -47,8 +47,8 @@
               <ul>
                 {% for activity in activities %}
                   {% if activity.possessor == member %}
-                    <li class="text-primary text-sm"> 
-                      {{ activity }}
+                    <li class="text-primary text-sm">
+                      <a href="{% url 'tango:activity-detail' activity.id %}">{{ activity }}</a>
                     </li>
                   {% endif %}
                 {% endfor %}

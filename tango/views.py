@@ -3,11 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sessions.models import Session
 from django.db.models import Count
 from django.http import HttpResponse
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 
 from django.contrib.auth.decorators import login_required
 from django.template import loader
-from django.template.context_processors import request
 
 from django.urls import reverse_lazy, reverse
 from django.views import generic
@@ -16,7 +15,8 @@ from django.views import generic
 from tango.forms import (LoginForm, SignUpForm, ActivityCreationForm,
                          PlaceCreationForm, OccupationCreationForm,
                          CategoryCreationForm, MemberSearchForm,
-                         ActivitySearchForm, OpinionForm, )
+                         ActivitySearchForm, OpinionForm,
+                         )
 from tango.models import Activity, Member, Place, Category, Occupation, Opinion
 
 
@@ -78,8 +78,6 @@ def register_user(request):
             msg = "Account created successfully."
             success = True
 
-            # return redirect("/")
-
         else:
             msg = "Form is not valid"
     else:
@@ -125,37 +123,10 @@ class ActivitiesListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
+        context["opinions"] = Opinion.objects.all().select_related("activities")
         context["activity_search_form"] = ActivitySearchForm(self.request.GET)
         return context
 
-
-# class ActivityDetailView(LoginRequiredMixin, generic.DetailView):
-#     model = Activity
-#     queryset = (Activity.objects.order_by("name").select_related("category", "location", "possessor", ))
-#
-#     def get_request(self):
-#         activity = get_object_or_404(Activity, pk=self.object.pk)
-#
-#         opinions = Opinion.objects.filter(activity=activity)
-#         form = OpinionForm(self.request.GET)
-#
-#         if self.request.method == "POST":
-#             opinion_form = OpinionForm(self.request.POST)
-#             if opinion_form.is_valid():
-#                 new_opinion = opinion_form.save(commit=False)
-#                 new_opinion.user = self.request.user
-#                 new_opinion.activity = self.object
-#                 new_opinion.save()
-#         return render(request, "tango/activity_detail.html", {"activity": activity, "opinions": opinions, "form": form})
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
-#         context["opinions"] = Opinion.objects.select_related("activity")
-#         context["opinion_form"] = OpinionForm(self.request.GET)
-#         return context
-#
-#
 
 class ActivityDetailView(LoginRequiredMixin, generic.DetailView):
     model = Activity
@@ -180,7 +151,6 @@ class ActivityDetailView(LoginRequiredMixin, generic.DetailView):
         return self.render_to_response(self.get_context_data(opinion_form=form))
 
 
-
 class MembersListView(LoginRequiredMixin, generic.ListView):
     model = Member
     paginate_by = 4
@@ -195,7 +165,7 @@ class MembersListView(LoginRequiredMixin, generic.ListView):
         occupation_id = self.request.GET.get("occupation_id")
         if occupation_id:
             queryset = queryset.filter(occupations__id=occupation_id)
-        return queryset
+        return queryset.annotate(activity_count=Count("activity"))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -214,7 +184,7 @@ class MemberDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
-        context["activities"] = (Activity.objects.order_by("name").select_related("possessor"))
+        context["activities"] = Activity.objects.order_by("name").select_related("possessor")
         return context
 
 

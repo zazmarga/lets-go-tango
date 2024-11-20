@@ -1,9 +1,7 @@
 from contextlib import nullcontext
-
 from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
-from django.utils.functional import empty
 
 from tango.models import Member, Occupation, Activity, Category, Place, Opinion
 
@@ -67,10 +65,18 @@ class SignUpForm(UserCreationForm):
                 "class": "form-control"
             }
         ))
+
     occupations = forms.ModelMultipleChoiceField(
-        queryset=Occupation.objects.all(),
-        widget=forms.CheckboxSelectMultiple(),
+        queryset=Occupation.objects.all(Occupation.objects.create(name="Tanguero", description="I dance Tango or learn it"))
+            if not Occupation.objects.exists() else Occupation.objects.all(),
         required=True,
+        initial=Occupation.objects.filter(name="Tanguero"),
+        widget=forms.CheckboxSelectMultiple(
+            attrs={
+                "selected_occupation": "Tanguero",
+                "class": "form-control-check"
+            }
+        ),
     )
     password1 = forms.CharField(
         widget=forms.PasswordInput(
@@ -89,7 +95,16 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = Member
-        fields = ("username", "first_name", "last_name", "email", "phone_number", "occupations", "password1", "password2")
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "phone_number",
+            "occupations",
+            "password1",
+            "password2",
+        )
 
 
 class ActivityCreationForm(forms.ModelForm):
@@ -225,7 +240,9 @@ class PlaceCreationForm(forms.ModelForm):
     city = forms.CharField(
         required=False,
         widget=forms.Select(
-            choices=set((city["city"], city["city"]) for city in Place.objects.values("city").distinct()),
+            choices=[("", "--no selected city--")]
+                    + [(city["city"], city["city"]) for city
+                       in Place.objects.values("city").distinct().order_by("city")],
             attrs={
                 "placeholder": "Select city",
                 "class": "form-control",
@@ -273,7 +290,8 @@ class ActivitySearchForm(forms.Form):
     day_of_week = forms.ChoiceField(
         required=False,
         label="",
-        choices=[("", "--no selected day--"), (0, "MONDAY"), (1, "TUESDAY"), (2, "WEDNESDAY"), (3, "THURSDAY"), (4, "FRIDAY"), (5, "SATURDAY"),
+        choices=[("", "--no selected day--"), (0, "MONDAY"), (1, "TUESDAY"), (2, "WEDNESDAY"),
+                 (3, "THURSDAY"), (4, "FRIDAY"), (5, "SATURDAY"),
                  (6, "SUNDAY"), ],
         widget=forms.Select(
             attrs={
@@ -285,7 +303,7 @@ class ActivitySearchForm(forms.Form):
 
 class OpinionForm(forms.ModelForm):
     content = forms.CharField(
-        required=False,
+        required=True,
         label="",
         widget=forms.Textarea(
             attrs={
@@ -299,4 +317,3 @@ class OpinionForm(forms.ModelForm):
     class Meta:
         model = Opinion
         fields = ("content", )
-

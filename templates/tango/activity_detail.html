@@ -61,9 +61,9 @@
                 <div class="card position-relative form-content" style="width: 100%; padding: 5px 5px;"> 
                   {% for opinion in opinions %}
                     <div class="text-sm">
-                      <span class="card-text text-xs" style=""> 
+                      <span class="card-text text-xs" style="">
                         <span class="text-muted">
-                          <a href="" title="{{ opinion.user.first_name }} {{ opinion.user.last_name }}" disabled> {{ opinion.user.username }} </a>,  {{ opinion.created_time|timesince }}: </span>
+                          <a href="" title="{{ opinion.user.first_name }} {{ opinion.user.last_name }}" disabled> {{ opinion.user.username }} </a>, <text class="text-xs"> {{ opinion.created_time|timesince }}:</text> </span>
                         {{ opinion.content }} <hr style="margin: 2px 2px">
                       </span>
                     </div>
@@ -78,22 +78,16 @@
                       <form method="post" action="">
                         {% csrf_token %}
                         {{ opinion_form }}
-                        <p><button type="submit" class="btn-primary count_item_bar" style="width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">Save</button></p>
+                        <p><button type="submit" class="btn-primary count_item_bar" style="width: 60px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">save</button></p>
                       </form>
                     </div>
                 </div>
               
-              
-              
-              
               </div>
             
-            
-                
-                
-                </div>
               </div>
-            </div>  
+            </div>
+          </div>  
                 
                 
           </div>
@@ -104,22 +98,6 @@
     </div>
 
   
-<!-- opinions   -->
-
-{#    <div class="card" style="margin-top: 5px;">#}
-{#        <div class="card-header comment">#}
-{#          Add a new opinion:#}
-{#        </div>#}
-{#        <div class="card comment">#}
-{#          <form method="post">#}
-{#            {% csrf_token %}#}{#            {{ opinion_form }}#}
-{#            <p><button type="submit" class="btn btn-dark comment">Save</button></p>#}
-{#          </form>#}
-{#        </div>#}
-{#    #}
-{#    </div>#}
-  
-<!-- opinions   -->
 </div>  
   
   <!--   Core JS Files   -->

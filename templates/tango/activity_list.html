@@ -32,7 +32,6 @@
             </a>
             <form action="" method="get" class="inline bg-gradient" style="width: 20%; height: 40px; border-radius: 5px; padding-left: 1%; background-color: whitesmoke;">
               {{ activity_search_form }}
-{#              <input type="hidden" name="user" value="{{ user.id }}">#}
               <input type="submit" value="&#8981; search" class="inline btn-primary count_item_bar position-relative" style="left: 80%; top: -90%; width: 100px; background-image: linear-gradient(195deg, #EC407A 0%, #250415 80%);">
             </form>
             
@@ -41,7 +40,10 @@
           {% for activity in activity_list %}
             
             <a href="{% url 'tango:activity-detail' activity.id %}">
-              {{ activity.name }}
+              {{ activity.name }} 
+              {%  if activity.opinions.all|length > 0 %}
+                <text class="text-xs">({{ activity.opinions.all|length }} opinion{{ activity.opinions.all|pluralize }})</text>
+              {% endif %}
             </a>
             <i>
               place: {{ activity.location.name }},  
@@ -55,8 +57,6 @@
   </div>
 
   </div>
-  
-  
   
   
   <!--   Core JS Files   -->

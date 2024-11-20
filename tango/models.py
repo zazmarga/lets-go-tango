@@ -1,6 +1,3 @@
-from importlib.metadata import requires
-from random import choice
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -52,7 +49,6 @@ class Place(models.Model):
         return self.name
 
 
-
 class Member(AbstractUser):
     occupations = models.ManyToManyField(Occupation, related_name="members")
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
@@ -91,6 +87,7 @@ class Activity(models.Model):
     def __str__(self):
         location_name = self.location.name if self.location else "No location"
         return f"{self.name} ({location_name})"
+
 
 class Opinion(models.Model):
     user = models.ForeignKey(
