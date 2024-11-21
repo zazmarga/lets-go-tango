@@ -68,8 +68,7 @@ class SignUpForm(UserCreationForm):
         )
     )
     occupations = forms.ModelMultipleChoiceField(
-        queryset=Occupation.objects.all()
-            if not Occupation.objects.exists() else Occupation.objects.all(),
+        queryset=Occupation.objects.all(),
         required=True,
         initial=Occupation.objects.filter(name="Tanguero"),
         widget=forms.CheckboxSelectMultiple(

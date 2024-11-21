@@ -122,7 +122,7 @@ class ActivitiesListView(LoginRequiredMixin, generic.ListView):
             if form.cleaned_data.get("is_mine"):
                 queryset = queryset.filter(possessor=form.cleaned_data.get("user_id"))
             if day_of_week != "":
-                queryset = queryset.filter(day_of_week=day_of_week)
+                queryset = queryset.filter(day_of_week=day_of_week).order_by("start_time")
 
         category_id = self.request.GET.get("id_category")
         if category_id:

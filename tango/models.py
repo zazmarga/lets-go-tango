@@ -82,7 +82,7 @@ class Activity(models.Model):
 
     class Meta:
         verbose_name_plural = "activities"
-        ordering = ["day_of_week", "start_time"]
+        ordering = ["day_of_week", "start_time", ]
 
     def __str__(self):
         location_name = self.location.name if self.location else "No location"
