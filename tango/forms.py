@@ -1,7 +1,7 @@
 from contextlib import nullcontext
 from django import forms
 
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from tango.models import Member, Occupation, Activity, Category, Place, Opinion
 
@@ -317,3 +317,70 @@ class OpinionForm(forms.ModelForm):
     class Meta:
         model = Opinion
         fields = ("content", )
+
+
+class MemberUpdateForm(UserChangeForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "First name",
+                "class": "form-control"
+            }
+        ))
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last name",
+                "class": "form-control"
+            }
+        ))
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control"
+            }
+        ))
+    phone_number = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Contact phone number",
+                "class": "form-control"
+            }
+        ))
+
+    occupations = forms.ModelMultipleChoiceField(
+        queryset=Occupation.objects.all(),
+        required=True,
+        widget=forms.CheckboxSelectMultiple(
+            attrs={
+                "selected_occupation": "Tanguero",
+                "class": "form-control-check"
+            }
+        ),
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "class": "form-control"
+            }
+        ))
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password check",
+                "class": "form-control"
+            }
+        ))
+    class Meta:
+        model = Member
+        fields = (
+            "first_name",
+            "last_name",
+            "email",
+            "phone_number",
+            "occupations",
+            "password1",
+            "password2",
+        )

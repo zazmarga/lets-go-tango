@@ -16,6 +16,7 @@ from tango.forms import (LoginForm, SignUpForm, ActivityCreationForm,
                          PlaceCreationForm, OccupationCreationForm,
                          CategoryCreationForm, MemberSearchForm,
                          ActivitySearchForm, OpinionForm,
+                         MemberUpdateForm,
                          )
 from tango.models import Activity, Member, Place, Category, Occupation, Opinion
 
@@ -303,3 +304,17 @@ class ActivityDeleteView(LoginRequiredMixin, generic.DeleteView):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.annotate(activity_count=Count("activity"))
         return context
+
+
+class MemberUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Member
+    form_class = MemberUpdateForm
+    success_url = reverse_lazy("tango:member-detail")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["occupations"] = Occupation.objects.annotate(member_count=Count("members"))
+        return context
+
+    def get_success_url(self):
+        return reverse("tango:member-detail", kwargs={"pk": self.object.pk})
