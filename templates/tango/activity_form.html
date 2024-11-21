@@ -15,7 +15,7 @@
 
 {% extends "layouts/base.html" %}
 
-{% block title %} Add new activity {% endblock %}
+{% block title %} {{ object|yesno:"Update,Add new" }} activity {% endblock %}
 
 <body class="presentation-page bg-gray-200">
 {% block content %}

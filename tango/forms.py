@@ -58,16 +58,17 @@ class SignUpForm(UserCreationForm):
                 "class": "form-control"
             }
         ))
-    phone_number = forms.CharField(
+    phone_number = forms.IntegerField(
+        required=False,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Contact phone number",
+                "placeholder": "Phone_number: only numbers, not spaces and chars",
                 "class": "form-control"
             }
-        ))
-
+        )
+    )
     occupations = forms.ModelMultipleChoiceField(
-        queryset=Occupation.objects.all(Occupation.objects.create(name="Tanguero", description="I dance Tango or learn it"))
+        queryset=Occupation.objects.all()
             if not Occupation.objects.exists() else Occupation.objects.all(),
         required=True,
         initial=Occupation.objects.filter(name="Tanguero"),
@@ -341,14 +342,15 @@ class MemberUpdateForm(UserChangeForm):
                 "class": "form-control"
             }
         ))
-    phone_number = forms.CharField(
+    phone_number = forms.IntegerField(
+        required=False,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Contact phone number",
+                "placeholder": "Phone_number: only numbers, not spaces and chars",
                 "class": "form-control"
             }
-        ))
-
+        )
+    )
     occupations = forms.ModelMultipleChoiceField(
         queryset=Occupation.objects.all(),
         required=True,

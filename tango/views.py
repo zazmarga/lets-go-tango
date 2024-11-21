@@ -1,3 +1,5 @@
+from http.client import responses
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sessions.models import Session
@@ -67,11 +69,17 @@ def login_view(request):
 def register_user(request):
     msg = None
     success = False
-
+    if request.method == "GET":
+        if Occupation.objects.count() == 0:
+            Occupation.objects.create(name="Tanguero", description="I dance Tango or learn it")
     if request.method == "POST":
         form = SignUpForm(request.POST)
+
         if form.is_valid():
-            form.save()
+            member = form.save()
+            tanguero, _ = Occupation.objects.get_or_create(name="Tanguero")
+            member.occupations.add(tanguero)
+
             username = form.cleaned_data.get("username")
             raw_password = form.cleaned_data.get("password1")
             authenticate(username=username, password=raw_password)
