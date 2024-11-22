@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 from django.test import TestCase
@@ -146,7 +144,10 @@ class ModelTests(TestCase):
             )
 
     def test_activity_verbose_name_plural(self):
-        self.assertEqual(str(self.activity._meta.verbose_name_plural), "activities")
+        self.assertEqual(
+            str(self.activity._meta.verbose_name_plural),
+            "activities"
+        )
 
     def test_activity_ordering_by_day_of_week_to_start_time(self):
         activities = Activity.objects.all()
@@ -158,8 +159,14 @@ class ModelTests(TestCase):
         self.assertEqual(str(activities[2].start_time), "10:00:00")
 
     def test_activity_str(self):
-        self.assertEqual(str(self.activity),  f"{self.activity.name} ({self.activity.location.name})")
-        self.assertEqual(str(self.activity1), f"{self.activity1.name} (No location)")
+        self.assertEqual(
+            str(self.activity),
+            f"{self.activity.name} ({self.activity.location.name})"
+        )
+        self.assertEqual(
+            str(self.activity1),
+            f"{self.activity1.name} (No location)"
+        )
 
     def test_opinion_ordering_by_created_time_reverse(self):
         Opinion.objects.create(

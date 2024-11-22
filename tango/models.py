@@ -51,7 +51,12 @@ class Place(models.Model):
 
 class Member(AbstractUser):
     occupations = models.ManyToManyField(Occupation, related_name="members")
-    phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
+    phone_number = models.CharField(
+        max_length=15,
+        unique=True,
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ("last_name", "first_name")
@@ -72,12 +77,25 @@ class Activity(models.Model):
     ]
     name = models.CharField(max_length=155)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    possessor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    location = models.ForeignKey(Place, on_delete=models.CASCADE, blank=True, null=True)
+    possessor = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    location = models.ForeignKey(
+        Place,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
     day_of_week = models.IntegerField(choices=DAY_CHOICES)
     start_time = models.TimeField()
     end_time = models.TimeField()
-    price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        blank=True,
+        null=True
+    )
     additional_notes = models.TextField(blank=True, null=True)
 
     class Meta:

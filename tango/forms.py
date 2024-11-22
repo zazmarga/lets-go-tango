@@ -5,9 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from tango.models import Member, Occupation, Activity, Category, Place, Opinion
 
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
+
 class LoginForm(forms.Form):
     username = forms.CharField(
         widget=forms.TextInput(
@@ -25,10 +23,6 @@ class LoginForm(forms.Form):
         ))
 
 
-"""
-Copyright (c) 2019 - present AppSeed.us
---changed--
-"""
 class SignUpForm(UserCreationForm):
     username = forms.CharField(
         widget=forms.TextInput(
@@ -62,7 +56,8 @@ class SignUpForm(UserCreationForm):
         required=False,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Phone_number: only numbers, not spaces and chars",
+                "placeholder": "Phone_number: only numbers, "
+                               "not spaces and chars",
                 "class": "form-control"
             }
         )
@@ -108,7 +103,9 @@ class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if Occupation.objects.exists():
-            self.fields["occupations"].initial = Occupation.objects.filter(name="Tanguero")
+            self.fields["occupations"].initial = Occupation.objects.filter(
+                name="Tanguero"
+            )
         else:
             self.fields["occupations"].initial = None
 
@@ -144,8 +141,15 @@ class ActivityCreationForm(forms.ModelForm):
         ),
     )
     day_of_week = forms.ChoiceField(
-        choices=[(0, "MONDAY"), (1, "TUESDAY"), (2, "WEDNESDAY"), (3, "THURSDAY"), (4, "FRIDAY"), (5, "SATURDAY"),
-                 (6, "SUNDAY"), ],
+        choices=[
+            (0, "MONDAY"),
+            (1, "TUESDAY"),
+            (2, "WEDNESDAY"),
+            (3, "THURSDAY"),
+            (4, "FRIDAY"),
+            (5, "SATURDAY"),
+            (6, "SUNDAY"),
+        ],
         widget=forms.Select(
             attrs={
                 "placeholder": "Select day of the week",
@@ -186,6 +190,7 @@ class ActivityCreationForm(forms.ModelForm):
             }
         )
     )
+
     class Meta:
         model = Activity
         possessor = nullcontext
@@ -198,17 +203,20 @@ class OccupationCreationForm(forms.ModelForm):
     name = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Occupation's name in one word with a capital letter",
+                "placeholder": "Occupation's name "
+                               "in one word with a capital letter",
                 "class": "form-control"
             }
         ))
     description = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Brief description of this role in the Tango community",
+                "placeholder": "Brief description "
+                               "of this role in the Tango community",
                 "class": "form-control"
             }
         ))
+
     class Meta:
         model = Occupation
         fields = ("name", "description")
@@ -229,6 +237,7 @@ class CategoryCreationForm(forms.ModelForm):
                 "class": "form-control"
             }
         ))
+
     class Meta:
         model = Category
         fields = ("name", "description")
@@ -278,8 +287,13 @@ class PlaceCreationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if Place.objects.exists():
             self.fields["city"].widget.choices = (
-                    [("", "--no selected city--")] + [(city["city"], city["city"])
-                    for city in Place.objects.values("city").distinct().order_by("city")]
+                    [("", "--no selected city--")]
+                    +
+                    [
+                        (city["city"], city["city"])
+                        for city in Place.objects.values("city")
+                        .distinct().order_by("city")
+                    ]
             )
         else:
             self.fields["city"].widget.choices = [("", "--no selected city--")]
@@ -303,9 +317,16 @@ class ActivitySearchForm(forms.Form):
     day_of_week = forms.ChoiceField(
         required=False,
         label="",
-        choices=[("", "--no selected day--"), (0, "MONDAY"), (1, "TUESDAY"), (2, "WEDNESDAY"),
-                 (3, "THURSDAY"), (4, "FRIDAY"), (5, "SATURDAY"),
-                 (6, "SUNDAY"), ],
+        choices=[
+            ("", "--no selected day--"),
+            (0, "MONDAY"),
+            (1, "TUESDAY"),
+            (2, "WEDNESDAY"),
+            (3, "THURSDAY"),
+            (4, "FRIDAY"),
+            (5, "SATURDAY"),
+            (6, "SUNDAY"),
+        ],
         widget=forms.Select(
             attrs={
                 "class": "form-control",
@@ -327,6 +348,7 @@ class OpinionForm(forms.ModelForm):
             }
         )
     )
+
     class Meta:
         model = Opinion
         fields = ("content", )
@@ -358,7 +380,8 @@ class MemberUpdateForm(UserChangeForm):
         required=False,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Phone_number: only numbers, not spaces and chars",
+                "placeholder": "Phone_number: "
+                               "only numbers, not spaces and chars",
                 "class": "form-control"
             }
         )
@@ -387,6 +410,7 @@ class MemberUpdateForm(UserChangeForm):
                 "class": "form-control"
             }
         ))
+
     class Meta:
         model = Member
         fields = (

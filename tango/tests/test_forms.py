@@ -2,10 +2,15 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-
 from tango.forms import (
-    SignUpForm, ActivityCreationForm, OccupationCreationForm, CategoryCreationForm,
-    PlaceCreationForm, MemberSearchForm, ActivitySearchForm, OpinionForm
+    SignUpForm,
+    ActivityCreationForm,
+    OccupationCreationForm,
+    CategoryCreationForm,
+    PlaceCreationForm,
+    MemberSearchForm,
+    ActivitySearchForm,
+    OpinionForm,
 )
 from tango.models import Occupation, Category, Place, Activity
 
@@ -71,7 +76,11 @@ class SignUpFormTest(TestCase):
 class FormsTest(TestCase):
     def setUp(self):
         self.category = Category.objects.create(name="Test category")
-        self.location = Place.objects.create(name="Test location", city="Test city", direction="Test direction")
+        self.location = Place.objects.create(
+            name="Test location",
+            city="Test city",
+            direction="Test direction"
+        )
         self.occupation = Occupation.objects.create(name="Test occupation")
         self.member = get_user_model().objects.create_user(
             username="testmember",

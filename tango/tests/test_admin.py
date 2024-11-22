@@ -19,7 +19,7 @@ class AdminSiteTests(TestCase):
 
     def test_member_phone_number_listed(self):
         """
-        Test that member's phone number is in display-list on member's admin page
+        Test that member's phone number is in display-list of admin page
         """
         url = reverse("admin:tango_member_changelist")
         res = self.client.get(url)
