@@ -63,3 +63,10 @@ add the necessary information (the same can be done on the admin page)
 
 29. Links to all the above pages are in the top panel, where there is also a "Logout"
 
+30. db.json  - This file contains a test base to see how the application works.
+ - python manage.py migrate
+ - python manage.py loaddata db.json --settings=lets_go_tango.settings
+ - python manage.py runserver
+ - superuser:
+    username: "admin.lgt"
+    password: "vatikan77"
