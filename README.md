@@ -6,7 +6,7 @@ your tango activities and leave feedback on other community members' tango class
 
 1. python manage.py migrate
 2. python manage.py createsuperuser
-3. Open Home page, Sign in with superuser data
+3. python manage.py runserver & Open Home page, Sign in with superuser data
 
 4. Open page "People"
 5. Add the first occupation to sidebar "All members" button "New":
@@ -59,6 +59,7 @@ add the necessary information (the same can be done on the admin page)
  - How many members from each occupation
  - How many Tango activities are  in each category
  - How many Tango activities are in each city
+28. All -list pages have a pagination, including pages after selecting lists by criteria
 
-28. Links to all the above pages are in the top panel, where there is also a "Logout"
+29. Links to all the above pages are in the top panel, where there is also a "Logout"
 

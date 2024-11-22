@@ -70,7 +70,6 @@ class SignUpForm(UserCreationForm):
     occupations = forms.ModelMultipleChoiceField(
         queryset=Occupation.objects.all(),
         required=True,
-        initial=Occupation.objects.filter(name="Tanguero"),
         widget=forms.CheckboxSelectMultiple(
             attrs={
                 "selected_occupation": "Tanguero",
@@ -105,6 +104,13 @@ class SignUpForm(UserCreationForm):
             "password1",
             "password2",
         )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if Occupation.objects.exists():
+            self.fields["occupations"].initial = Occupation.objects.filter(name="Tanguero")
+        else:
+            self.fields["occupations"].initial = None
 
 
 class ActivityCreationForm(forms.ModelForm):
@@ -240,9 +246,6 @@ class PlaceCreationForm(forms.ModelForm):
     city = forms.CharField(
         required=False,
         widget=forms.Select(
-            choices=[("", "--no selected city--")]
-                    + [(city["city"], city["city"]) for city
-                       in Place.objects.values("city").distinct().order_by("city")],
             attrs={
                 "placeholder": "Select city",
                 "class": "form-control",
@@ -270,6 +273,16 @@ class PlaceCreationForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = ("name", "city", "new_city", "direction")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if Place.objects.exists():
+            self.fields["city"].widget.choices = (
+                    [("", "--no selected city--")] + [(city["city"], city["city"])
+                    for city in Place.objects.values("city").distinct().order_by("city")]
+            )
+        else:
+            self.fields["city"].widget.choices = [("", "--no selected city--")]
 
 
 class MemberSearchForm(forms.Form):
