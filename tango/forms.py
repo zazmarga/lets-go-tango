@@ -102,12 +102,14 @@ class SignUpForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if Occupation.objects.exists():
-            self.fields["occupations"].initial = Occupation.objects.filter(
+        if not Occupation.objects.exists():
+            Occupation.objects.create(
+                name="Tanguero",
+                description="I dance Tango or learn it"
+            )
+        self.fields["occupations"].initial = Occupation.objects.filter(
                 name="Tanguero"
             )
-        else:
-            self.fields["occupations"].initial = None
 
 
 class ActivityCreationForm(forms.ModelForm):
