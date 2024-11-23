@@ -1,0 +1,1919 @@
+[
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2024-11-18T22:04:19.000",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "1",
+        "object_repr": "Tanguero",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2024-11-18T22:04:28.436",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "Zazulia Marharyta",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Phone number\", \"Occupations\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2024-11-18T23:02:48.709",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "3",
+        "object_repr": "Tango lesson group",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2024-11-18T23:04:33.224",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "Group tango lesson",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2024-11-18T23:09:23.954",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "1",
+        "object_repr": "El Beso",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Direction\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2024-11-20T01:05:17.832",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "4",
+        "object_repr": "There is always very nice",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2024-11-20T13:38:54.042",
+        "user": 1,
+        "content_type": 10,
+        "object_id": "1",
+        "object_repr": "Tanguero",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2024-11-20T16:02:23.703",
+        "user": 1,
+        "content_type": 11,
+        "object_id": "10",
+        "object_repr": "",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 4,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 4,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 4,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 4,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 5,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 5,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 5,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 5,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add place",
+        "content_type": 6,
+        "codename": "add_place"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change place",
+        "content_type": 6,
+        "codename": "change_place"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete place",
+        "content_type": 6,
+        "codename": "delete_place"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view place",
+        "content_type": 6,
+        "codename": "view_place"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add member",
+        "content_type": 7,
+        "codename": "add_member"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change member",
+        "content_type": 7,
+        "codename": "change_member"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete member",
+        "content_type": 7,
+        "codename": "delete_member"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view member",
+        "content_type": 7,
+        "codename": "view_member"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add category",
+        "content_type": 8,
+        "codename": "add_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change category",
+        "content_type": 8,
+        "codename": "change_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete category",
+        "content_type": 8,
+        "codename": "delete_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view category",
+        "content_type": 8,
+        "codename": "view_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can add activity",
+        "content_type": 9,
+        "codename": "add_activity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can change activity",
+        "content_type": 9,
+        "codename": "change_activity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can delete activity",
+        "content_type": 9,
+        "codename": "delete_activity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can view activity",
+        "content_type": 9,
+        "codename": "view_activity"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add occupation",
+        "content_type": 10,
+        "codename": "add_occupation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change occupation",
+        "content_type": 10,
+        "codename": "change_occupation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete occupation",
+        "content_type": 10,
+        "codename": "delete_occupation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can view occupation",
+        "content_type": 10,
+        "codename": "view_occupation"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can add opinion",
+        "content_type": 11,
+        "codename": "add_opinion"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 42,
+    "fields": {
+        "name": "Can change opinion",
+        "content_type": 11,
+        "codename": "change_opinion"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+        "name": "Can delete opinion",
+        "content_type": 11,
+        "codename": "delete_opinion"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+        "name": "Can view opinion",
+        "content_type": 11,
+        "codename": "view_opinion"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "tango",
+        "model": "place"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "tango",
+        "model": "member"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "tango",
+        "model": "category"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "tango",
+        "model": "activity"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "tango",
+        "model": "occupation"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "tango",
+        "model": "opinion"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6mr58l63bc0rcgrlapbb8vajnl2stze1",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQRO9CHaHFgG1cps8ZELBLTD4gGZwmyt1jSy6ScmbevDezbm2zXSstNiGbmGCn3867cKe8D3hz-Vp4KLktyfMd4cda-aUgPc4H-yeYXZ23dw9ijIMIWiiJGBBCb7TTQvcmGDkiSO0AvfSkxEgd0BAxgjI-0pal2qR5fdpXqqlVNnWfLz-OPPs:1tEDeQ:4W0D5dByaooA4UJZn_FvnDzkNyErDIfAim730huQaZI",
+        "expire_date": "2024-12-05T17:19:42.528"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "xgbrsulkg8kcusq8ihxn12r1rvpf6sjh",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQRO9CHSE2gA0u0_sMCNglJh8sGTtNlLsHSy6ScmbevDdzflsnt1VaXEY2MGCn3y74eKeyD3jz5TrzOJd1yYHvCD_WyscZ6XE52D_B5OvU3p0Ak3qIGpREjChiZ7XXoDsbrTQopPYCgwykwNBZUJ8wCWVDopalatKyPd0r17xWNsDnCz-MPPo:1tESPE:d62hSfQu5Ij0wekobAXXrHL4ME7KTB_JCsjozdexPJk",
+        "expire_date": "2024-12-06T09:05:00.309"
+    }
+},
+{
+    "model": "tango.category",
+    "pk": 1,
+    "fields": {
+        "name": "Group tango lesson",
+        "description": "Tango lesson in a group of 4 or more people"
+    }
+},
+{
+    "model": "tango.category",
+    "pk": 2,
+    "fields": {
+        "name": "Milonga",
+        "description": "Milonga is tango paty for people who dance tango"
+    }
+},
+{
+    "model": "tango.category",
+    "pk": 3,
+    "fields": {
+        "name": "Photo set",
+        "description": "Tango photo session"
+    }
+},
+{
+    "model": "tango.category",
+    "pk": 4,
+    "fields": {
+        "name": "Private tango lesson",
+        "description": "Tango lesson private for 1-2 persons"
+    }
+},
+{
+    "model": "tango.category",
+    "pk": 5,
+    "fields": {
+        "name": "Tango show",
+        "description": "Tango theater or show with the participation of professional tango dancers"
+    }
+},
+{
+    "model": "tango.category",
+    "pk": 6,
+    "fields": {
+        "name": "Tango party",
+        "description": "We get together with friends tangueros to chat and dance with each other"
+    }
+},
+{
+    "model": "tango.occupation",
+    "pk": 1,
+    "fields": {
+        "name": "Tanguero",
+        "description": "I dance Tango or learn it"
+    }
+},
+{
+    "model": "tango.occupation",
+    "pk": 2,
+    "fields": {
+        "name": "Photographer",
+        "description": "I make photo reports of tango events"
+    }
+},
+{
+    "model": "tango.occupation",
+    "pk": 4,
+    "fields": {
+        "name": "Teacher",
+        "description": "I teach tango, give group or private lessons"
+    }
+},
+{
+    "model": "tango.occupation",
+    "pk": 5,
+    "fields": {
+        "name": "Tango DJ",
+        "description": "I provide musical accompaniment for Tango events"
+    }
+},
+{
+    "model": "tango.occupation",
+    "pk": 6,
+    "fields": {
+        "name": "Organizer",
+        "description": "I organize diferents tango events"
+    }
+},
+{
+    "model": "tango.occupation",
+    "pk": 7,
+    "fields": {
+        "name": "Professional dancer",
+        "description": "I dance professionally, participate in tango shows or dance in tango theater"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 1,
+    "fields": {
+        "name": "El Beso",
+        "city": "Buenos Aires",
+        "direction": "Riobamba 416"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 2,
+    "fields": {
+        "name": "Glorieta Belgrano",
+        "city": "Buenos Aires",
+        "direction": "Echevarria 1800"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 3,
+    "fields": {
+        "name": "Club Sports Nauto",
+        "city": "San Clemente",
+        "direction": "Street 567, 120"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 4,
+    "fields": {
+        "name": "Centro Cultural Avellaneda",
+        "city": "Avellaneda",
+        "direction": "Bartolome Mitre, 4065"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 5,
+    "fields": {
+        "name": "CETBA",
+        "city": "Buenos Aires",
+        "direction": "Agrelo 3126"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 6,
+    "fields": {
+        "name": "Teatro Astros",
+        "city": "Buenos Aires",
+        "direction": "Sarmiento 3632"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 7,
+    "fields": {
+        "name": "Bar Tangerous",
+        "city": "Buenos Aires",
+        "direction": "Inclan 3326"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 8,
+    "fields": {
+        "name": "Salon Caning",
+        "city": "Buenos Aires",
+        "direction": "Scalabrini Ortiz 1336"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 9,
+    "fields": {
+        "name": "Club Villa Malcolm",
+        "city": "Buenos Aires",
+        "direction": "Avenida Córdoba 5064"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 10,
+    "fields": {
+        "name": "Plaza Del Sur",
+        "city": "Avellaneda",
+        "direction": "Crusso Avenuda Mayo & calle Sur"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 11,
+    "fields": {
+        "name": "Club Armenia",
+        "city": "Buenos Aires",
+        "direction": "Armenia,  1331"
+    }
+},
+{
+    "model": "tango.place",
+    "pk": 12,
+    "fields": {
+        "name": "La Paila",
+        "city": "Buenos Aires",
+        "direction": "Costa Rica 4848"
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$ovlnjHfRK8ORU5GaZNAvFY$QG5sCoiXXZrFI94TooTXN3iNV21MhCpoZAf9iyAh9Jk=",
+        "last_login": "2024-11-22T09:05:00.224",
+        "is_superuser": true,
+        "username": "admin.lgt",
+        "first_name": "Marharyta",
+        "last_name": "Zazulia",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-11-18T21:54:33",
+        "phone_number": "01133029239",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            2,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$sXfOIQ7AYivRlOn39U8FiC$4gAW7I4Z0Os0gzsVyQCqBUTx5zmgtAJvTHY0hBmV+r8=",
+        "last_login": "2024-11-18T23:23:36.681",
+        "is_superuser": false,
+        "username": "Nastia",
+        "first_name": "Anastasiia",
+        "last_name": "Zazulia",
+        "email": "zazoml@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-18T22:47:15.448",
+        "phone_number": "01127970436",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            2,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$8Rj9MbED8HWemv7ik4ZBB0$mOTF2tJPtVnZ/6VhTIpL6A9Lp3SUIA3W4WycrKew3VM=",
+        "last_login": "2024-11-18T23:50:05.888",
+        "is_superuser": false,
+        "username": "inessa",
+        "first_name": "Iness",
+        "last_name": "Musapappa",
+        "email": "musapa@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-18T23:49:03.413",
+        "phone_number": "01127554322",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$wB7nFoPVyv05paGOYOhkC4$w+fr5+QCtbB7wivqMYTvyKkB/eSLBxF4L56rzCcN4IU=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "valeria_buzhati",
+        "first_name": "Valeria",
+        "last_name": "Buzhatti",
+        "email": "valebu@yahoo.com.ar",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-18T23:56:19.833",
+        "phone_number": "54911612233",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            5,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$sZDBft4eddqKmcHE7aiYOl$orNVH2dUaDxBiL2+eAXNp5rsfiLxg9KObEkzl6jtWoc=",
+        "last_login": "2024-11-19T16:07:03.010",
+        "is_superuser": false,
+        "username": "chili",
+        "first_name": "Martin",
+        "last_name": "Chili",
+        "email": "muylunestango@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-18T23:58:48.162",
+        "phone_number": "0111560118686",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$IVdh4m1wnzys98EawnEeHX$eOvADoqBEDGvm21Ck211H0/+fqNa8j2qp+Xox3OfJdU=",
+        "last_login": "2024-11-19T13:35:45.995",
+        "is_superuser": false,
+        "username": "riobo",
+        "first_name": "Roberto",
+        "last_name": "Riobo",
+        "email": "riobo@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-19T13:34:36.564",
+        "phone_number": "01155039277",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            5,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$9fJ4utzUEgOoYFhuQldXKD$BMtJQ80l7s/ZztPCjQ4kQ6AsmK6FO3rbSwxmezdX9ek=",
+        "last_login": "2024-11-19T14:22:21.691",
+        "is_superuser": false,
+        "username": "alexa_manti",
+        "first_name": "Alexandra",
+        "last_name": "Mantinian",
+        "email": "alexam@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-19T13:40:23.836",
+        "phone_number": "01121234375",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            7,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$ywNK3QMi9mnGcy69dNM8zd$BSy6o5oECeeLbnWMTL6CTtBvEg7vSoTSoogT75x+cFk=",
+        "last_login": "2024-11-19T16:16:13.311",
+        "is_superuser": false,
+        "username": "salas",
+        "first_name": "Marcelo",
+        "last_name": "Salas",
+        "email": "glorietadebelgrano@yahoo.com.ar",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-19T16:15:56.909",
+        "phone_number": "54911612211",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            5,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$VATvaxDdVXbup6mxFGEfqM$xZ0fyzT8TpkZEpn0BJ1EGVbORg5mT7XPxxbgf2f3U8A=",
+        "last_login": "2024-11-20T01:10:15.374",
+        "is_superuser": false,
+        "username": "pablo",
+        "first_name": "Pablo",
+        "last_name": "Ponce",
+        "email": "juliasofiamarini@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T01:09:57.611",
+        "phone_number": "01125550436",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$SvRncRMLvQPQgkOdvjlf8r$4bp5rY10oxc9YMSXUSF52mVXBP6lZwE0mUh6pXuZN7U=",
+        "last_login": "2024-11-20T13:32:24.679",
+        "is_superuser": false,
+        "username": "horacio",
+        "first_name": "Horacio",
+        "last_name": "Godoy",
+        "email": "lavirutatangoclubba@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T13:32:06.762",
+        "phone_number": "01157639022",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            5,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$n1el22Q7aeplXLocboMsTh$NiWkQCX0xcqBTYakP1cWCdjs+AKAIUhVdtyn3qGy5wA=",
+        "last_login": "2024-11-20T14:23:23.548",
+        "is_superuser": false,
+        "username": "taras",
+        "first_name": "Taras",
+        "last_name": "Shevchenko",
+        "email": "taras@shev.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T14:23:04.475",
+        "phone_number": "01127970499",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 12,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$KrNXJpapUf8lJlZnj0MU5J$x3e3Gmfib/lBz07J9iShkDcz80i+OMhX6yuXdJcgLao=",
+        "last_login": "2024-11-20T15:00:11.637",
+        "is_superuser": false,
+        "username": "majo",
+        "first_name": "Majo",
+        "last_name": "Marini",
+        "email": "tango.lamaria@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T14:59:56.277",
+        "phone_number": "54911610145",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 13,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$fUXOk4Olx2cKxmjt8M9p2x$XLvCDwFRvHFouVzAg5ocH+WhwiPkh6Fam0zNEqCiB5w=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "aoniquen",
+        "first_name": "Aoniken",
+        "last_name": "Quiroga",
+        "email": "aoni1974@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T18:54:08.306",
+        "phone_number": "01133029945",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            7,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 14,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$zEIFPchbAabgD29mYwoCOe$tNlj+/e/Isbx3tY83QXJZ8Rabj9n6RybYs7283SJofo=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "valeria",
+        "first_name": "Valeria",
+        "last_name": "Buzhatti",
+        "email": "valewi@yandex.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T19:18:32.332",
+        "phone_number": "0965642243",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            5,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 15,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$XPqwLmWXGzPnDqBxeh2eTc$nArRJCjBMjvVViRPZSa8oizJx2H2GSMSwblBeWgz8gg=",
+        "last_login": "2024-11-20T21:00:00.226",
+        "is_superuser": false,
+        "username": "vale",
+        "first_name": "Valeria",
+        "last_name": "Whitenberg",
+        "email": "valewi@yandex.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T20:27:47.727",
+        "phone_number": "0985631243",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 16,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$MMHb7GXifTHdOk7soYZZXI$XJx0qM6xvJPawTxdJ53p/IJZ5m2hObKLfrbWXhuQR4Y=",
+        "last_login": "2024-11-20T21:05:06.015",
+        "is_superuser": false,
+        "username": "camargo",
+        "first_name": "Quique",
+        "last_name": "Camargo",
+        "email": "quiquecamargo@outlook.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-20T21:04:15.181",
+        "phone_number": "01133029293",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            5,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 17,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$kMFCw29MhXzGF9yNWXCKp6$lRjgmd1MdtRoCgSRmjiQ2/4LMeEq3kSZ/E5Kick5YPw=",
+        "last_login": "2024-11-21T01:50:05.343",
+        "is_superuser": false,
+        "username": "Mina",
+        "first_name": "LIUDMYLA",
+        "last_name": "Shevchenko",
+        "email": "lsh@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T01:49:41.115",
+        "phone_number": "1133029238",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 18,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$Zrmdsy7pIHfrAT8IcmOeAO$Z82W/aBGbHXQhMg8mpbFak68gnrOG8NWWDO5cdD0w9s=",
+        "last_login": "2024-11-21T02:17:14.670",
+        "is_superuser": false,
+        "username": "daniela",
+        "first_name": "Daniela",
+        "last_name": "Camponovo",
+        "email": "diatavvv@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T02:13:05.856",
+        "phone_number": null,
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 19,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$S0TeKcwapL2fqXZjCf2mCv$7TQAcon+UzSLPHefl1bvCt5n2N+/1nx1y2Gc7UohmOg=",
+        "last_login": "2024-11-21T14:14:55.743",
+        "is_superuser": false,
+        "username": "dania",
+        "first_name": "Daniil",
+        "last_name": "Ivanov",
+        "email": "diatavvv@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T14:14:39.911",
+        "phone_number": "9585441610",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            5,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 20,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$u07vrhpkH4r4K6h991Hh2G$BELjbyT0b0FvZybujBEiSiTlZQiBjK01aS8Jc3naskM=",
+        "last_login": "2024-11-21T14:46:56.975",
+        "is_superuser": false,
+        "username": "olga",
+        "first_name": "Olga",
+        "last_name": "Sidorova",
+        "email": "osida@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T14:41:45.057",
+        "phone_number": "9585333210",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            2,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 21,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$Hd3YyNSqh8mO7U4OqYFyWW$ogYuJk6EJcxKMrMRt/Eb5CIHy6fam8+pVfu3Mx9MIMQ=",
+        "last_login": "2024-11-21T14:50:07.870",
+        "is_superuser": false,
+        "username": "marcelobot",
+        "first_name": "Marcelo",
+        "last_name": "Bottari",
+        "email": "marcebo@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T14:48:53.391",
+        "phone_number": "65777234511",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 22,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$n6E8Y4aIO5WobJRMsLrBEr$SbwPnvJxMWSzltzeLZaupLMFdiR+T/hpxE2RX5L5hw4=",
+        "last_login": "2024-11-21T14:52:41.832",
+        "is_superuser": false,
+        "username": "fabi",
+        "first_name": "Fabian",
+        "last_name": "Piralta",
+        "email": "fabian22@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T14:52:25.409",
+        "phone_number": "95854416999",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            7,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 23,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$nTSGkSoK37R5Pp5B2gdrDr$XNSPt5TWxEYgVmRjVDJ5MQ+N50vTQdz1M/FHJ4n9gi0=",
+        "last_login": "2024-11-21T15:05:02.718",
+        "is_superuser": false,
+        "username": "nanip",
+        "first_name": "Nani",
+        "last_name": "Piralta",
+        "email": "nani22@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:03:46.324",
+        "phone_number": "95854416567",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            7,
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 24,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$sLJCWt9lQsWL7KSYigZGIK$WpaTzmGzqBGUqNlzm7WLA4tcLvSdcdIwwgxeBQkQjrc=",
+        "last_login": "2024-11-21T15:07:07.468",
+        "is_superuser": false,
+        "username": "liza",
+        "first_name": "Liza",
+        "last_name": "Bruno",
+        "email": "lizasss@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:06:54.921",
+        "phone_number": "1133029119",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 25,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$SY4ELyj2cr8AmnuPzXUcKJ$fufYcRIc7dKoi3QaA3pIAeQxNz7gz16zOGwHLLyF0qE=",
+        "last_login": "2024-11-21T15:22:01.678",
+        "is_superuser": false,
+        "username": "krol",
+        "first_name": "Diana",
+        "last_name": "Krol",
+        "email": "ledidi@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:21:49.631",
+        "phone_number": "1156777213",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            7,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 26,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$dFY2DWGcIDO0oCpG3fNfR3$q4q+5YTzQ8ozEeWAGt8A3/0aPoj0WPdS3PBMX2Nr9+Y=",
+        "last_login": "2024-11-21T15:27:18.756",
+        "is_superuser": false,
+        "username": "misha",
+        "first_name": "Mihail",
+        "last_name": "Anisimov",
+        "email": "mia@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:27:03.288",
+        "phone_number": "1198333142",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            5
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 27,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$A2Hskfuc6GQYIf867ot516$+cD7qviGsN8m0JdYJeTeFnC9aGu5uRg42sKMoK9nmdQ=",
+        "last_login": "2024-11-21T15:35:08.714",
+        "is_superuser": false,
+        "username": "alla",
+        "first_name": "Alla",
+        "last_name": "Alynana",
+        "email": "alebo@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:34:56.212",
+        "phone_number": "65555234332",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            2
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 28,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$gXEQyLyPDwgX8bcPD2RUcZ$bhYLQrsOeigh0EMTqC1ciitfKmNUZFExW76XfIoLe7E=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "alexs",
+        "first_name": "Alexandr",
+        "last_name": "Anin",
+        "email": "alexan@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:37:25.892",
+        "phone_number": "65555234111",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            6
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 29,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$8nTVdZPEmw0fnxd8LybAtj$mdoPRnMq1mlMqHYFCiCBrvLv1ZCBrg7chXb44n00oxQ=",
+        "last_login": "2024-11-21T15:40:11.752",
+        "is_superuser": false,
+        "username": "alen",
+        "first_name": "Alen",
+        "last_name": "Delon",
+        "email": "delo2@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:39:59.670",
+        "phone_number": "12853244667",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            7,
+            1
+        ]
+    }
+},
+{
+    "model": "tango.member",
+    "pk": 30,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$dj310KUdR79uKRAzA4vrRr$FS0Pac1StjW+gZnvk4tf8Ghr+ZUaW1jV4RuLVtrud7k=",
+        "last_login": "2024-11-21T15:41:48.112",
+        "is_superuser": false,
+        "username": "alenma",
+        "first_name": "Alen",
+        "last_name": "Mask",
+        "email": "mask@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-21T15:41:35.524",
+        "phone_number": "95854332011",
+        "groups": [],
+        "user_permissions": [],
+        "occupations": [
+            7
+        ]
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 1,
+    "fields": {
+        "name": "Lesson tango-milonga",
+        "category": 1,
+        "possessor": 1,
+        "location": 3,
+        "day_of_week": 4,
+        "start_time": "11:00:00",
+        "end_time": "13:30:00",
+        "price": "5.00",
+        "additional_notes": "All niveles"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 2,
+    "fields": {
+        "name": "Milonga ptactica Nauto's",
+        "category": 2,
+        "possessor": 1,
+        "location": 3,
+        "day_of_week": 5,
+        "start_time": "14:00:00",
+        "end_time": "16:30:00",
+        "price": "1.00",
+        "additional_notes": "\"La gorra\""
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 3,
+    "fields": {
+        "name": "Tango pfoto set",
+        "category": 3,
+        "possessor": 2,
+        "location": null,
+        "day_of_week": 4,
+        "start_time": "18:00:00",
+        "end_time": "20:00:00",
+        "price": "50.00",
+        "additional_notes": "contact pfone number: 056 333 777 25"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 4,
+    "fields": {
+        "name": "Tango lesson for women",
+        "category": 1,
+        "possessor": 3,
+        "location": 5,
+        "day_of_week": 3,
+        "start_time": "18:30:00",
+        "end_time": "20:00:00",
+        "price": null,
+        "additional_notes": "Men can take too"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 8,
+    "fields": {
+        "name": "Milonga Muy Lunes Tango",
+        "category": 2,
+        "possessor": 5,
+        "location": 6,
+        "day_of_week": 0,
+        "start_time": "20:30:00",
+        "end_time": "04:00:00",
+        "price": "3.50",
+        "additional_notes": "Has a special Tango Show"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 9,
+    "fields": {
+        "name": "Milonga Catulo",
+        "category": 2,
+        "possessor": 6,
+        "location": 7,
+        "day_of_week": 3,
+        "start_time": "20:00:00",
+        "end_time": "01:00:00",
+        "price": "4.50",
+        "additional_notes": "One drink free for everybody"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 10,
+    "fields": {
+        "name": "Tango lesson two roles",
+        "category": 1,
+        "possessor": 7,
+        "location": 1,
+        "day_of_week": 1,
+        "start_time": "19:45:00",
+        "end_time": "21:00:00",
+        "price": "7.50",
+        "additional_notes": "We are teaching with Aoniquen Quirogu"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 11,
+    "fields": {
+        "name": "Private tango lesson",
+        "category": 4,
+        "possessor": 7,
+        "location": null,
+        "day_of_week": 5,
+        "start_time": "11:00:00",
+        "end_time": "14:00:00",
+        "price": "15.00",
+        "additional_notes": "All levels of dancing, contact  WhatsApp: 1133025543"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 12,
+    "fields": {
+        "name": "Tango show in Paracultural",
+        "category": 5,
+        "possessor": 7,
+        "location": 8,
+        "day_of_week": 4,
+        "start_time": "23:00:00",
+        "end_time": "00:30:00",
+        "price": "10.00",
+        "additional_notes": "Accompanied by live music from the D'Arienzo"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 13,
+    "fields": {
+        "name": "Tango lesson",
+        "category": 1,
+        "possessor": 5,
+        "location": 6,
+        "day_of_week": 0,
+        "start_time": "19:00:00",
+        "end_time": "20:30:00",
+        "price": "4.50",
+        "additional_notes": "The price includes a milonga after the lesson"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 14,
+    "fields": {
+        "name": "Party for Day of Tango",
+        "category": 6,
+        "possessor": 5,
+        "location": null,
+        "day_of_week": 5,
+        "start_time": "12:00:00",
+        "end_time": "00:00:00",
+        "price": "6.00",
+        "additional_notes": "address of private party by appointment by phone: 11 3601 55 27"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 15,
+    "fields": {
+        "name": "La Glorieta",
+        "category": 2,
+        "possessor": 8,
+        "location": 2,
+        "day_of_week": 5,
+        "start_time": "17:00:00",
+        "end_time": "23:00:00",
+        "price": "1.00",
+        "additional_notes": "\"La gorra\",  if won't be raining"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 16,
+    "fields": {
+        "name": "Milonga La Morocha",
+        "category": 2,
+        "possessor": 1,
+        "location": 8,
+        "day_of_week": 5,
+        "start_time": "14:30:00",
+        "end_time": "19:00:00",
+        "price": "6.00",
+        "additional_notes": ""
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 17,
+    "fields": {
+        "name": "Malcolm Tango Club",
+        "category": 2,
+        "possessor": 9,
+        "location": 9,
+        "day_of_week": 1,
+        "start_time": "22:00:00",
+        "end_time": "00:00:00",
+        "price": "5.50",
+        "additional_notes": "TDj invitados. Clases aranceladas, practica sin cargo."
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 18,
+    "fields": {
+        "name": "Milonga Del Sur",
+        "category": 2,
+        "possessor": 9,
+        "location": 10,
+        "day_of_week": 6,
+        "start_time": "19:00:00",
+        "end_time": "22:00:00",
+        "price": "1.00",
+        "additional_notes": "\"La gorra\",  if won't be raining"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 19,
+    "fields": {
+        "name": "La Viruta Tango Club",
+        "category": 2,
+        "possessor": 10,
+        "location": 11,
+        "day_of_week": 2,
+        "start_time": "17:40:00",
+        "end_time": "04:00:00",
+        "price": "7.50",
+        "additional_notes": "Include 2 lessons, practica & milonga"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 20,
+    "fields": {
+        "name": "La Maria Tango",
+        "category": 2,
+        "possessor": 12,
+        "location": 12,
+        "day_of_week": 3,
+        "start_time": "21:30:00",
+        "end_time": "00:00:00",
+        "price": "5.50",
+        "additional_notes": "1er piso. TDj invitados. Restorán de comidas regionales. Apto bicicletas"
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 21,
+    "fields": {
+        "name": "Milonga Camargo",
+        "category": 2,
+        "possessor": 16,
+        "location": 1,
+        "day_of_week": 5,
+        "start_time": "15:00:00",
+        "end_time": "22:00:00",
+        "price": "10.00",
+        "additional_notes": "DJ Quique Camargo. Reservas por Whatsapp."
+    }
+},
+{
+    "model": "tango.activity",
+    "pk": 22,
+    "fields": {
+        "name": "Lesson tango-milonga",
+        "category": 1,
+        "possessor": 18,
+        "location": 2,
+        "day_of_week": 5,
+        "start_time": "16:30:00",
+        "end_time": "18:00:00",
+        "price": "1.00",
+        "additional_notes": "\"La gorra\",  if won't be raining"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "activity": 15,
+        "created_time": "2024-11-19T23:44:51.429",
+        "content": "Godd"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "activity": 15,
+        "created_time": "2024-11-19T23:45:34.186",
+        "content": "Godd"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 3,
+    "fields": {
+        "user": 1,
+        "activity": 1,
+        "created_time": "2024-11-19T23:49:47.708",
+        "content": "I laked it!"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "activity": 15,
+        "created_time": "2024-11-19T23:50:41.723",
+        "content": "There is always very nice"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 5,
+    "fields": {
+        "user": 1,
+        "activity": 9,
+        "created_time": "2024-11-20T00:29:37.405",
+        "content": "It's really cool milonga!"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 6,
+    "fields": {
+        "user": 1,
+        "activity": 14,
+        "created_time": "2024-11-20T00:32:22.835",
+        "content": "Very nice party."
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 7,
+    "fields": {
+        "user": 1,
+        "activity": 14,
+        "created_time": "2024-11-20T00:37:25.411",
+        "content": "I liked too. Cooll!!"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 8,
+    "fields": {
+        "user": 1,
+        "activity": 14,
+        "created_time": "2024-11-20T00:38:01.724",
+        "content": "eb framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes ca"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 9,
+    "fields": {
+        "user": 9,
+        "activity": 17,
+        "created_time": "2024-11-20T01:22:39.397",
+        "content": "I like this Milonga! A lot of people"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 11,
+    "fields": {
+        "user": 1,
+        "activity": 20,
+        "created_time": "2024-11-20T16:02:05.472",
+        "content": "Nice milonga, nice people that are organising!"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 12,
+    "fields": {
+        "user": 1,
+        "activity": 16,
+        "created_time": "2024-11-20T21:54:27.300",
+        "content": "It's very nice place!"
+    }
+},
+{
+    "model": "tango.opinion",
+    "pk": 13,
+    "fields": {
+        "user": 1,
+        "activity": 15,
+        "created_time": "2024-11-21T00:53:36.198",
+        "content": "It's nice milonga! I laked! .-)"
+    }
+}
+]

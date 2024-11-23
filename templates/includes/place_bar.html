@@ -1,0 +1,22 @@
+<div class="col-lg-3 bg-gradient-faded-primary-vertical"  style="border-radius: 20px">
+    <div class="page-header-bar min-vh-85 relative">
+      <span class="bg-gradient-secondary opacity-2"></span>
+      <div class="container align-top">
+            <h2 class="text-white pt-3 mt-n5">All places:</h2>
+            <p class="lead text-white mt-3">
+              <i class="text-light text-sm">by cities </i>
+            <hr>
+              {% for one in cities_count %}
+                <br>
+                <a href="{% url 'tango:place-list' %}?city={{ one.city }}" class="nav-item nav-fill lead text-white mt-3">
+                  <button class="count_item_bar text-sm text-primary " style="background:#9a78cc;">
+                    {{ one.place_count }} </button>
+                  {{ one.city }}
+                </a>
+
+              {% endfor %}
+            </p>
+      </div>
+    </div>
+</div>
+      
