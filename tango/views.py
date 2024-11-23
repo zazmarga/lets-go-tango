@@ -73,12 +73,7 @@ def login_view(request):
 def register_user(request):
     msg = None
     success = False
-    if request.method == "GET":
-        if Occupation.objects.count() == 0:
-            Occupation.objects.create(
-                name="Tanguero",
-                description="I dance Tango or learn it"
-            )
+
     if request.method == "POST":
         form = SignUpForm(request.POST)
 
