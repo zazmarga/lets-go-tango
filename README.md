@@ -44,4 +44,11 @@ At the moment of registration of the first member, the occupation "Tanguero" wil
 
 ## Demo
 
+If you dance Tango or are learning it, you can register, 
+after that Sign In with your data, 
+or Sign In as a TEST user:
+  - login: user
+  - password: user12345
+
+
 ![Website Interface](demo.png)
