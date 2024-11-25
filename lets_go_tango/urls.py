@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from lets_go_tango import settings
+from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
