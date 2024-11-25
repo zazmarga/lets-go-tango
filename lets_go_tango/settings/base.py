@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 
 from dotenv import load_dotenv
-from tests.settings import STATIC_ROOT
+
 
 load_dotenv()
 
