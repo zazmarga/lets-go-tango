@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from lets_go_tango import settings
+from django.conf import settings
 
 
 class Category(models.Model):
